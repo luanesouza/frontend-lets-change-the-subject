@@ -1,15 +1,16 @@
 import React from 'react';
 
-export default function Homepage(){
+export default function Homepage(props){
+  console.log(props);
 
   return(
     <section>
       <h1> Let's Change the Subject </h1>
       <p> Conversations made easy </p>
 
-      <button value='Sign Up'/>
+      <button> Sign Up </button>
       <a> Already have an account? </a>
-      <a> Skip for Now </a>
+      <a href='/choose-your-adventure'> Skip for Now </a>
     </section>
   )
 }

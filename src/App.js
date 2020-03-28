@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom'
+import CategoryPage from './components/CategoryPage';
 import './App.css';
 
 import Homepage from './components/Homepage';
@@ -30,10 +31,19 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <main className="App">
-        <Homepage />
+        <Route exact path='/'>
+          <Homepage props={this.props}/>
+        </Route>
+
+        <Route path='/login'>
+
+        </Route>
+
+        <Route path='/choose-your-adventure'>
+          <CategoryPage />
+        </Route>
       </main>
     );
   }
