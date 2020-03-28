@@ -11,6 +11,7 @@ export default class CategoryPage extends Component {
   whichCards = (evt) => {
     evt.preventDefault()
     console.log(evt.target.innerText);
+
   }
 
   render() {
