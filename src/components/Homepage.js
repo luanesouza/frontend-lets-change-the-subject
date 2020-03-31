@@ -4,13 +4,14 @@ export default function Homepage(props){
   console.log(props);
 
   return(
-    <section>
+    <section className='Homepage'>
       <h1> Let's Change the Subject </h1>
       <p> Conversations made easy </p>
-
-      <button> Sign Up </button>
-      <a href='/login'> Already have an account? </a>
-      <a href='/choose-your-adventure'> Skip for Now </a>
+      <section className='signup-section'>
+        <button id='signup-button'> Sign Up </button>
+        <a href='/login'> Already have an account? </a>
+      </section>
+      <a id='skip-tag' href='/choose-your-adventure'> Skip for Now </a>
     </section>
   )
 }
