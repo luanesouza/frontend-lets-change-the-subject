@@ -1,65 +1,56 @@
 import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import CardContainer from './CardContainer';
-import { getCategories, getQuestions } from '../utils';
+// import { getCategories, getQuestions } from '../utils';
 
 class CategoryPage extends Component {
 
   state = {
-    chosenQuestions: [],
-    categories: []
+    questionSet: ["hello"],
+    categories: ["friends", "coworkers", "partners"],
+    selectedCategory: ""
   }
 
-
-  whichCards = (evt, category) => {
+  whichCategory = (evt, category) => {
     evt.preventDefault()
-
-    this.setQuestions(category)
-  }
-
-  setCategories = async () => {
-    const categories = await getCategories()
     this.setState({
-      categories
+      selectedCategory: category
     })
+///////////////////////// this function will redirect the user to the next component and pass the questionSet
   }
 
-  setQuestions = async (chosenCategory) => {
-    const data = await getQuestions(chosenCategory)
+  determineQuestionSet = () => {
+    let questionSet;
+    
+    if (this.state.selectedCategory === "friends"){
+      questionSet = this.props.friendsQs
+    } else if (this.state.selectedCategory === "coworkers"){
+      questionSet = this.props.coworkersQs
+    } else {
+      questionSet = this.props.partnersQs
+    }
 
-    this.setState({
-      chosenQuestions: data.question.questions
-    })
-
-    // this.props.history.push('/make-it-fun')
-    console.log(this.state);
-  }
-
-  componentDidMount = () => {
-    this.setCategories()
+    return questionSet
   }
 
   render() {
-    const items = this.state.categories.map( category => {
-        return <button onClick={(evt) => this.whichCards(evt, category.name)} key={category.id}> Talk with {category.name} </button>
-      })
+  ////// I think that since we only have three cats, we don't need the fetch, we can just hardcode them //
+
+    let items = this.state.categories.map( category => {
+      return <button 
+                onClick={(evt) => this.whichCategory(evt, category)} 
+                key={category}
+              > Talk with {category} 
+              </button>
+    })
 
     return(
-
       <section>
         { items }
-
-          {
-            this.state.chosenQuestions.length > 0
-
-            ?
-              <CardContainer cards={this.state.chosenQuestions}/>
-            :
-
-              <p> loading </p>
-
-          }
-
+          <CardContainer 
+            cards={this.determineQuestionSet()}
+            nextQuestion={this.props.nextQuestion}
+            chosenCategory={this.state.chosenCategory}/>
       </section>
     )
   }

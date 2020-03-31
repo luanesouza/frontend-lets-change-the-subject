@@ -1,37 +1,21 @@
 import React from 'react';
-import Card from './Card';
+// import Card from './Card';
 
 export default function CardContainer(props){
 
+  // WE SHOULD DECIDE WHERE THE LOGIC FOR KEEPING THE COUNTER OF QUESTIONS SHOULD LIVE -- it can live here, and we'd need to make this stateful
 
-  console.log(props.cards[0]);
-  const cards = props.cards.map( card => <Card card={card} /> )
-
-  const alreadyDisplayed = props.cards.filter( card => card.id == true)
-
-  // const randomQuestionIndex = (evt) => {
-  //   evt.preventDefault()
-  //
-  //   let index = Math.floor(Math.random() * props.cards.length)
-  //   console.log(index);
-  //   return index;
-  // }
+  const handleClick = (action) => {
+    props.nextQuestion(action, props.cards[0], props.chosenCategory)
+  }
 
   return(
     <section>
-      {props.cards.length > 0
-
-        ?
-
-        <>
-        console.log(alreadyDisplayed);
-        </>
-
-        :
-
-        <p>loadin</p>
-
-      }
+      <>
+      <p>{props?.cards[0]?.content}</p>
+      <button onClick={() => handleClick("skip")}> skip </button>
+      <button onClick={() => handleClick("next")}> next </button>
+      </>
     </section>
   )
 }
