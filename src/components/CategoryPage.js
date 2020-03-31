@@ -53,10 +53,10 @@ class CategoryPage extends Component {
             this.state.chosenQuestions.length > 0
 
             ?
-            <CardContainer cards={this.state.chosenQuestions}/>
+              <CardContainer cards={this.state.chosenQuestions}/>
             :
 
-            <p> loading </p>
+              <p> loading </p>
 
           }
 
