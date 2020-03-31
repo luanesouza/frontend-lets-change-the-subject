@@ -26,7 +26,7 @@ class App extends Component {
   }
 
   nextQuestion(action, questionObject, category){
-    console.log("HERE ARE THE OBJECTS PASSED", action, questionObject, category);
+    console.group("HERE ARE THE OBJECTS PASSED and messages from the function", action, questionObject, category)
     if (action === "skip"){
       console.log("here's going to be a post to seen_questions with skip as true");
     } else {
@@ -34,6 +34,7 @@ class App extends Component {
     }
 
     console.log("here's gonna be a setState that deletes the questionObject from the state");
+    console.groupEnd()
   }
 
     // these two next functions only exists so I can work with a user object; once login/signup is set up, you'll save the user to state and pass it down to categoryPage component. If the person clicks "skip", we'll fetch from the /questions and I'll create on the backend a scope that sends out only limited number of randomized questions within a category instead of a massive fetch 
