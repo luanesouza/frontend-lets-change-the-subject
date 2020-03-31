@@ -26,14 +26,17 @@ class App extends Component {
   }
 
   nextQuestion(action, questionObject, category){
-    console.group("HERE ARE THE OBJECTS PASSED and messages from the function", action, questionObject, category)
+    console.group("here are messages from the nextQuestion function")
+    console.log("🔻 action requested:", action)
+    console.log("🔻 question to be changed:", questionObject)
+    console.log("🔻 current category:", category)
     if (action === "skip"){
-      console.log("✨ here's going to be a post to seen_questions with skip as true");
+      console.log("👷🏽‍♀️next steps: here's going to be a post to seen_questions with skip as true");
     } else {
-      console.log("✨ here's gonna be a post without mentioning skip as on the backend it defaults to false")
+      console.log("👷🏽‍♀️next steps: here's gonna be a post without mentioning skip as on the backend it defaults to false")
     }
 
-    console.log(" ✨ here's gonna be a setState that deletes the questionObject from the state");
+    console.log("👷🏽‍♀️and: here's gonna be a setState that deletes the questionObject from the state");
     console.groupEnd()
   }
 

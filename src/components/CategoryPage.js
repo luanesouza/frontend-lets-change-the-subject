@@ -8,7 +8,7 @@ class CategoryPage extends Component {
   state = {
     questionSet: ["hello"],
     categories: ["friends", "coworkers", "partners"],
-    selectedCategory: ""
+    selectedCategory: "friends"
   }
 
   whichCategory = (evt, category) => {
@@ -50,7 +50,7 @@ class CategoryPage extends Component {
           <CardContainer 
             cards={this.determineQuestionSet()}
             nextQuestion={this.props.nextQuestion}
-            chosenCategory={this.state.chosenCategory}/>
+            selectedCategory={this.state.selectedCategory}/>
       </section>
     )
   }

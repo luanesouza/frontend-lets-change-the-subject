@@ -6,7 +6,7 @@ export default function CardContainer(props){
   // WE SHOULD DECIDE WHERE THE LOGIC FOR KEEPING THE COUNTER OF QUESTIONS SHOULD LIVE -- it can live here, and we'd need to make this stateful
 
   const handleClick = (action) => {
-    props.nextQuestion(action, props.cards[0], props.chosenCategory)
+    props.nextQuestion(action, props.cards[0], props.selectedCategory)
   }
 
   return(
