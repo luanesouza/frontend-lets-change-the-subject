@@ -1,39 +1,68 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import CardContainer from './CardContainer';
+import { getCategories, getQuestions } from '../utils';
 
-export default class CategoryPage extends Component {
+class CategoryPage extends Component {
+
   state = {
-    cards: [1, 2, 3, 4, 5, 6],
-    chosenPath: []
+    chosenQuestions: [],
+    categories: []
   }
 
-  whichCards = (evt) => {
-    evt.preventDefault()
-    console.log(evt.target.innerText);
 
+  whichCards = (evt, category) => {
+    evt.preventDefault()
+
+    this.setQuestions(category)
+  }
+
+  setCategories = async () => {
+    const categories = await getCategories()
+    this.setState({
+      categories
+    })
+  }
+
+  setQuestions = async (chosenCategory) => {
+    const data = await getQuestions(chosenCategory)
+
+    this.setState({
+      chosenQuestions: data.question.questions
+    })
+
+    // this.props.history.push('/make-it-fun')
+    console.log(this.state);
+  }
+
+  componentDidMount = () => {
+    this.setCategories()
   }
 
   render() {
+    const items = this.state.categories.map( category => {
+        return <button onClick={(evt) => this.whichCards(evt, category.name)} key={category.id}> Talk with {category.name} </button>
+      })
+
     return(
+
       <section>
+        { items }
 
-      <button onClick ={(evt) => this.whichCards(evt)}>
-        Talk with Friends
-      </button>
+          {
+            this.state.chosenQuestions.length > 0
 
-      <button onClick={(evt) => this.whichCards(evt)}>
-        Talk with Coworkers
-      </button>
+            ?
+            <CardContainer cards={this.state.chosenQuestions}/>
+            :
 
-      <button onClick={(evt) => this.whichCards(evt)}>
-        Talk with Partner
-      </button>
+            <p> loading </p>
 
-      <Route path='/make-it-fun'>
-        <CardContainer cards={this.state.cards} />
-      </Route>
+          }
+
       </section>
     )
   }
 }
+
+export default withRouter(CategoryPage)

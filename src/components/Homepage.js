@@ -9,7 +9,7 @@ export default function Homepage(props){
       <p> Conversations made easy </p>
 
       <button> Sign Up </button>
-      <a> Already have an account? </a>
+      <a href='/login'> Already have an account? </a>
       <a href='/choose-your-adventure'> Skip for Now </a>
     </section>
   )
