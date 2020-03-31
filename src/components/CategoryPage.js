@@ -41,12 +41,12 @@ class CategoryPage extends Component {
 
   render() {
     const items = this.state.categories.map( category => {
-        return <button onClick={(evt) => this.whichCards(evt, category.name)} key={category.id}> Talk with {category.name} </button>
+        return <button id='category-button' onClick={(evt) => this.whichCards(evt, category.name)} key={category.id}> Talk with {category.name} </button>
       })
 
     return(
 
-      <section>
+      <section className='CategoryPage'>
         { items }
 
           {
