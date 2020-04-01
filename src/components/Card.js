@@ -4,9 +4,8 @@ export default function Card(props){
   console.log('worked', props);
 
   return(
-    <section>
+    <section id='card'>
       <p> {props.card.content} </p>
-      <button onClick={(evt) => props.newCard(evt)}> </button>
     </section>
   )
 }

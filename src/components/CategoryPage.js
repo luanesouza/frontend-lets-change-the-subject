@@ -7,9 +7,13 @@ class CategoryPage extends Component {
 
   state = {
     chosenQuestions: [],
-    categories: []
+    categories: [],
+    gameOn: false
   }
 
+  componentDidMount = () => {
+    this.setCategories()
+  }
 
   whichCards = (evt, category) => {
     evt.preventDefault()
@@ -35,29 +39,30 @@ class CategoryPage extends Component {
     console.log(this.state);
   }
 
-  componentDidMount = () => {
-    this.setCategories()
+  skipQuestion = (action) => {
+    console.log(action);
   }
 
+
   render() {
-    const items = this.state.categories.map( category => {
+    const categoryButtons = this.state.categories.map( category => {
         return <button id='category-button' onClick={(evt) => this.whichCards(evt, category.name)} key={category.id}> Talk with {category.name} </button>
       })
 
     return(
 
       <section className='CategoryPage'>
-        { items }
-
           {
             this.state.chosenQuestions.length > 0
 
             ?
+            
               <CardContainer cards={this.state.chosenQuestions}/>
             :
 
-              <p> loading </p>
-
+            <>
+              { categoryButtons }
+            </>
           }
 
       </section>
