@@ -4,36 +4,20 @@ import Card from './Card';
 export default function CardContainer(props){
 
   const [currentQuestion, setCurrentQuestion] = useState(props.cards[0])
+  const [counter, setCounter] = useState(1)
 
-  let counter = 0;
-
-  const showOneCard = (evt) => {
+  const showOneCard = (evt, action) => {
     evt.preventDefault()
+    console.log('clicked', props.cards);
 
     if(counter === props.cards.length){
-      console.log('we are out of question');
-      counter = 0;
+      setCounter(0)
+      return setCurrentQuestion(props.cards[1])
     } else {
-      counter++
+      setCounter(counter + 1)
+      return setCurrentQuestion(props.cards[counter])
     }
-    setCurrentQuestion(props.cards[counter])
-    console.log(currentQuestion);
-    return currentQuestion;
-
   }
-
-  // console.log(props.cards[0]);
-  // const cards = props.cards.map( card => <Card card={card} /> )
-  //
-  // const alreadyDisplayed = props.cards.filter( card => card.id == true)
-
-  // const randomQuestionIndex = (evt) => {
-  //   evt.preventDefault()
-  //
-  //   let index = Math.floor(Math.random() * props.cards.length)
-  //   console.log(index);
-  //   return index;
-  // }
 
   return(
     <section>
