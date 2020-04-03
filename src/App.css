@@ -83,6 +83,48 @@ html {
     padding: 30% 10%;
   }
 /* ------------------ */
-/* ----- Categories Page ----- */
 
+/* ----- Login Form ----- */
+
+.LoginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 5rem;
+}
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 90%;
+  height: 100%;
+}
+
+.input-section > label {
+  margin-left: 1rem;
+  margin-bottom: .8rem;
+}
+
+.input-section > input {
+  padding: 1rem;
+  border-radius: 15px;
+  border: none;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.input-section > input:focus {
+  /* background-color: red; */
+  /* add styling for when user clicks in input */
+}
+
+.LoginForm > input[type='submit'] {
+  background-color: lightgray;
+  padding: 10px;
+  border-radius: 15px;
+  margin-top: 1rem;
+}
 /* ------------------ */

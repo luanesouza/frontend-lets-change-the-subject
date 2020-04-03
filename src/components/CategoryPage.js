@@ -6,7 +6,8 @@ import { getCategories, getQuestions } from '../utils';
 class CategoryPage extends Component {
 
   state = {
-    chosenQuestions: [],
+    guestQuestions: [],
+    userQuestions: [],
     categories: [],
     gameOn: false
   }
@@ -23,16 +24,23 @@ class CategoryPage extends Component {
 
   setCategories = async () => {
     const categories = await getCategories()
+    
     this.setState({
       categories
     })
   }
 
   setQuestions = async (chosenCategory) => {
+    console.log(this.props);
+    if(this.props.isLoggedIn) {
+      this.setState({
+        userQuestions: []
+      })
+    }
     const data = await getQuestions(chosenCategory)
-
+    console.log(data);
     this.setState({
-      chosenQuestions: data.question.questions
+      guestQuestions: data.questions
     })
 
     // this.props.history.push('/make-it-fun')
@@ -49,15 +57,17 @@ class CategoryPage extends Component {
         return <button id='category-button' onClick={(evt) => this.whichCards(evt, category.name)} key={category.id}> Talk with {category.name} </button>
       })
 
+
+      // console.log(this.state);
     return(
 
       <section className='CategoryPage'>
           {
-            this.state.chosenQuestions.length > 0
+            this.state.guestQuestions.length > 0
 
             ?
-            
-              <CardContainer cards={this.state.chosenQuestions}/>
+
+              <CardContainer cards={this.state.guestQuestions}/>
             :
 
             <>
