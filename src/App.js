@@ -19,7 +19,6 @@ class App extends Component {
       coworkersQs: [],
       partnerQs: [],
     },
-    isLoggedIn: false,
     error: ''
   }
 
@@ -45,7 +44,7 @@ class App extends Component {
     if(username && password && email) {
       localStorage.clear()
       const data = await getLoginData(3)
-      localStorage.setItem('guest?', JSON.stringify(false))
+      localStorage.setItem('isGuest', JSON.stringify(false))
       localStorage.setItem('friends', JSON.stringify(data.remainingFriendsQs) )
       localStorage.setItem('coworkers', JSON.stringify(data.remainingCoworkersQs) )
       localStorage.setItem('partners', JSON.stringify(data.remainingPartnersQs) )
@@ -54,14 +53,12 @@ class App extends Component {
         error: 'please fill out the inputs'
       })
     }
+    this.props.history.push('/choose-your-adventure')
   }
 
   getGuestQuestions = () => {
     this.props.history.push('/choose-your-adventure');
 
-    this.setState({
-      isLoggedIn: false
-    })
   }
 
 
@@ -74,7 +71,7 @@ class App extends Component {
     if(status === 'guest') {
       localStorage.clear()
       this.getGuestQuestions()
-
+      localStorage.setItem('isGuest', JSON.stringify(true))
     } else if(status === 'login'){
       this.props.history.push('/login');
     }
@@ -85,7 +82,7 @@ class App extends Component {
 
       <main className="App">
         <Route exact path='/choose-your-adventure'>
-          <CategoryPage  isLoggedIn={this.state.isLoggedIn} />
+          <CategoryPage  />
         </Route>
 
         <Route exact path='/'>

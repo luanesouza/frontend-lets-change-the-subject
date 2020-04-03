@@ -6,14 +6,8 @@ import { getCategories, getQuestions } from '../utils';
 class CategoryPage extends Component {
 
   state = {
-    guestQuestions: [],
-    userQuestions: {
-      friends: [],
-      coworkers: [],
-      partner: []
-    },
+    chosenQuestions: [],
     categories: [],
-    gameOn: false
   }
 
   componentDidMount = () => {
@@ -27,11 +21,10 @@ class CategoryPage extends Component {
   }
 
   setCategories = async () => {
-
     if(!localStorage.categories){
       const categories = await getCategories()
       localStorage.setItem('categories', JSON.stringify(categories))
-      console.log(localStorage.categories);
+
       this.setState({
         categories
       })
@@ -40,29 +33,27 @@ class CategoryPage extends Component {
       this.setState({
         categories: JSON.parse(localStorage.categories)
       })
-      
+
     }
-
-
-    // let localCategories = JSON.parse(localStorage.getItem(categories))
-    // console.log(localCategories);
   }
 
   setQuestions = async (chosenCategory) => {
+    let isGuest = JSON.parse(localStorage.isGuest)
+    if(!isGuest) {
+      let choice = localStorage.getItem(chosenCategory)
 
-    if(this.props.isLoggedIn) {
       this.setState({
-        userQuestions: []
+        chosenQuestions: JSON.parse(choice)
       })
-    }
-    const data = await getQuestions(chosenCategory)
-    console.log(data);
-    this.setState({
-      guestQuestions: data.questions
-    })
 
-    // this.props.history.push('/make-it-fun')
-    console.log(this.state);
+    } else {
+      const data = await getQuestions(chosenCategory)
+      console.log(data);
+      this.setState({
+        chosenQuestions: data.questions
+      })
+
+    }
   }
 
   skipQuestion = (action) => {
@@ -81,11 +72,11 @@ class CategoryPage extends Component {
 
       <section className='CategoryPage'>
           {
-            this.state.guestQuestions.length > 0
+            this.state.chosenQuestions.length > 0
 
             ?
 
-              <CardContainer cards={this.state.guestQuestions}/>
+              <CardContainer cards={this.state.chosenQuestions}/>
             :
 
             <>
