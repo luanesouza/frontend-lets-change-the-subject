@@ -7,7 +7,11 @@ class CategoryPage extends Component {
 
   state = {
     guestQuestions: [],
-    userQuestions: [],
+    userQuestions: {
+      friends: [],
+      coworkers: [],
+      partner: []
+    },
     categories: [],
     gameOn: false
   }
@@ -16,22 +20,36 @@ class CategoryPage extends Component {
     this.setCategories()
   }
 
-  whichCards = (evt, category) => {
+  whatCards = (evt, category) => {
     evt.preventDefault()
 
     this.setQuestions(category)
   }
 
   setCategories = async () => {
-    const categories = await getCategories()
-    
-    this.setState({
-      categories
-    })
+
+    if(!localStorage.categories){
+      const categories = await getCategories()
+      localStorage.setItem('categories', JSON.stringify(categories))
+      console.log(localStorage.categories);
+      this.setState({
+        categories
+      })
+
+    } else {
+      this.setState({
+        categories: JSON.parse(localStorage.categories)
+      })
+      
+    }
+
+
+    // let localCategories = JSON.parse(localStorage.getItem(categories))
+    // console.log(localCategories);
   }
 
   setQuestions = async (chosenCategory) => {
-    console.log(this.props);
+
     if(this.props.isLoggedIn) {
       this.setState({
         userQuestions: []
@@ -54,7 +72,7 @@ class CategoryPage extends Component {
 
   render() {
     const categoryButtons = this.state.categories.map( category => {
-        return <button id='category-button' onClick={(evt) => this.whichCards(evt, category.name)} key={category.id}> Talk with {category.name} </button>
+        return <button id='category-button' onClick={(evt) => this.whatCards(evt, category.name)} key={category.id}> Talk with {category.name} </button>
       })
 
 

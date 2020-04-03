@@ -13,13 +13,14 @@ class App extends Component {
       username: '',
       password: '',
       email: '',
-      questions: {
-        friendsQs: [],
-        coworkersQs: [],
-        partnerQs: [],
-      },
+    },
+    userQuestions: {
+      friendsQs: [],
+      coworkersQs: [],
+      partnerQs: [],
     },
     isLoggedIn: false,
+    error: ''
   }
 
   handleChange(event){
@@ -31,16 +32,28 @@ class App extends Component {
         [name]: value
       }
     }));
-    console.log(this.state.userInfo);
   }
 
   async handleSubmit(evt){
     evt.preventDefault()
+    this.getLoginInfo()
   }
 
   getLoginInfo = async () => {
-    // const data = await getLoginData(3)
-    // console.log(data);
+    const {username, password, email} = this.state.userInfo
+
+    if(username && password && email) {
+      localStorage.clear()
+      const data = await getLoginData(3)
+      localStorage.setItem('guest?', JSON.stringify(false))
+      localStorage.setItem('friends', JSON.stringify(data.remainingFriendsQs) )
+      localStorage.setItem('coworkers', JSON.stringify(data.remainingCoworkersQs) )
+      localStorage.setItem('partners', JSON.stringify(data.remainingPartnersQs) )
+    } else {
+      this.setState({
+        error: 'please fill out the inputs'
+      })
+    }
   }
 
   getGuestQuestions = () => {
@@ -57,21 +70,14 @@ class App extends Component {
 
     // create conditionals that will redirect user depending on status
     evt.preventDefault()
-    console.log('clicked');
+
     if(status === 'guest') {
+      localStorage.clear()
       this.getGuestQuestions()
-      console.log('is a guest');
+
     } else if(status === 'login'){
-
       this.props.history.push('/login');
-
     }
-
-    // this.setState({
-    //   guest: false
-    // })
-
-    // console.log(this.state.guest);
   }
 
   render() {
@@ -79,7 +85,7 @@ class App extends Component {
 
       <main className="App">
         <Route exact path='/choose-your-adventure'>
-          <CategoryPage isLoggedIn={this.state.isLoggedIn} />
+          <CategoryPage  isLoggedIn={this.state.isLoggedIn} />
         </Route>
 
         <Route exact path='/'>
@@ -87,7 +93,7 @@ class App extends Component {
         </Route>
 
         <Route path='/login'>
-          <LoginForm handleSubmit={() => this.handleSubmit()} handleChange={(evt) => this.handleChange(evt)} userInfo={this.state.userInfo} />
+          <LoginForm handleSubmit={(evt) => this.handleSubmit(evt)} handleChange={(evt) => this.handleChange(evt)} userInfo={this.state.userInfo} />
         </Route>
 
       </main>
