@@ -3,13 +3,14 @@ import React, { Component } from 'react';
 export default class LoginForm extends Component {
 
   render() {
-
+    console.log(this.props);
     return(
-      <form className='LoginForm' onSubmit={(evt) => this.handleSubmit(evt)}>
+      <form className='LoginForm' onSubmit={(evt) => this.props.handleSubmit(evt)}>
         <section className='input-section'>
           <label> Username </label>
           <input
             type='text'
+            value={this.props.userInfo.username}
             name='username'
             onChange={(event) =>
               this.props.handleChange(event)}
@@ -22,6 +23,7 @@ export default class LoginForm extends Component {
           <label> Email </label>
           <input
             type='text'
+            value={this.props.userInfo.email}
             name='email'
             onChange={(event) =>
               this.props.handleChange(event)}
@@ -34,6 +36,7 @@ export default class LoginForm extends Component {
           <label> Password </label>
           <input
             type='text'
+            value={this.props.userInfo.password}
             name='password'
             onChange={(event) =>
               this.props.handleChange(event)}

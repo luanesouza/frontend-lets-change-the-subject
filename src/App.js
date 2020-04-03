@@ -24,10 +24,14 @@ class App extends Component {
 
   handleChange(event){
     const { name, value } = event.target
-
-    this.setState({
-      [name]: value
-    });
+    console.log(name, value);
+    this.setState(() => ({
+      userInfo: {
+        ...this.state.userInfo,
+        [name]: value
+      }
+    }));
+    console.log(this.state.userInfo);
   }
 
   async handleSubmit(evt){
@@ -35,7 +39,6 @@ class App extends Component {
   }
 
   getLoginInfo = async () => {
-    this.props.history.push('/login');
     // const data = await getLoginData(3)
     // console.log(data);
   }
@@ -60,7 +63,8 @@ class App extends Component {
       console.log('is a guest');
     } else if(status === 'login'){
 
-      this.getLoginInfo()
+      this.props.history.push('/login');
+
     }
 
     // this.setState({
@@ -83,7 +87,7 @@ class App extends Component {
         </Route>
 
         <Route path='/login'>
-          <LoginForm userInfo={this.state.userInfo} />
+          <LoginForm handleSubmit={() => this.handleSubmit()} handleChange={(evt) => this.handleChange(evt)} userInfo={this.state.userInfo} />
         </Route>
 
       </main>
