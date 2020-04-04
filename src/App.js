@@ -4,6 +4,7 @@ import CategoryPage from './components/CategoryPage';
 import CardContainer from './components/CardContainer';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
+import GameOver from './components/GameOver';
 import { getLoginData, createNewUser } from './utils';
 import './App.css';
 import Homepage from './components/Homepage';
@@ -102,6 +103,10 @@ class App extends Component {
 
           <Route exact path='/game'>
             <CardContainer />
+          </Route>
+
+          <Route exact path='/play-again'>
+            <GameOver />
           </Route>
 
           <Route exact path='/'>

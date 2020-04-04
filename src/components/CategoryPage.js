@@ -41,6 +41,7 @@ class CategoryPage extends Component {
     let isGuest = JSON.parse(localStorage.isGuest)
     if(!isGuest) {
       let choice = localStorage.getItem(chosenCategory)
+      console.log(choice);
 
       this.setState({
         chosenQuestions: JSON.parse(choice)
@@ -48,12 +49,9 @@ class CategoryPage extends Component {
 
     } else {
       const data = await getQuestions(chosenCategory)
-
-      localStorage.setItem('chosenQuestions', JSON.stringify(data))
-
-      this.setState({
-        chosenQuestions: data.questions
-      })
+      console.log(data);
+      localStorage.setItem('chosenQuestions', JSON.stringify(data.questions))
+      localStorage.setItem('chosenCategory', JSON.stringify(data.name))
     }
     this.props.history.push('/game')
   }
