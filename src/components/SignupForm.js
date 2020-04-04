@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 export default class SignupForm extends Component {
 
   render() {
-    console.log(this.props);
 
     return(
       <form className='SignupForm' onSubmit={(evt, action) => this.props.handleSubmit(evt, 'signup')}>

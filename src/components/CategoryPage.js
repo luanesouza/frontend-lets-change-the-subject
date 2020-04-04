@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import CardContainer from './CardContainer';
 import { getCategories, getQuestions } from '../utils';
 
@@ -41,15 +41,14 @@ class CategoryPage extends Component {
     let isGuest = JSON.parse(localStorage.isGuest)
     if(!isGuest) {
       let choice = localStorage.getItem(chosenCategory)
-      console.log(chosenCategory);
+
       this.setState({
         chosenQuestions: JSON.parse(choice)
       })
 
     } else {
       const data = await getQuestions(chosenCategory)
-      console.log(data);
-      console.log(data);
+
       this.setState({
         chosenQuestions: data.questions
       })
@@ -64,11 +63,9 @@ class CategoryPage extends Component {
 
   render() {
     const categoryButtons = this.state.categories.map( category => {
-        return <button id='category-button' onClick={(evt) => this.whatCards(evt, category.name)} key={category.id}> Talk with {category.name} </button>
-      })
+      return <button id='category-button' onClick={(evt) => this.whatCards(evt, category.name)} key={category.id}> Talk with {category.name} </button>
+    })
 
-
-      // console.log(this.state);
     return(
 
       <section className='CategoryPage'>

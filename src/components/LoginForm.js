@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class LoginForm extends Component {
 
   render() {
-    console.log(this.props);
+
     return(
       <form className='LoginForm' onSubmit={(evt, action) => this.props.handleSubmit(evt, 'login')}>
         <section className='input-section'>
