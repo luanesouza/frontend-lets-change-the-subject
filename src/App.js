@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, withRouter, Switch } from 'react-router-dom'
 import CategoryPage from './components/CategoryPage';
+import CardContainer from './components/CardContainer';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import { getLoginData, createNewUser } from './utils';
@@ -39,7 +40,7 @@ class App extends Component {
     if(username && password && email) {
       localStorage.clear()
       { action === 'login' ? data = await getLoginData(3) : data = await createNewUser({username, password, email}) }
-      console.log('youre ', action);
+
       localStorage.setItem('isGuest', JSON.stringify(false))
       localStorage.setItem('friends', JSON.stringify(data.remainingFriendsQs) )
       localStorage.setItem('coworkers', JSON.stringify(data.remainingCoworkersQs) )
@@ -99,7 +100,11 @@ class App extends Component {
             <SignupForm handleSubmit={(evt, action) => this.handleSubmit(evt, action)} handleChange={(evt) => this.handleChange(evt)} userInfo={this.state.userInfo} />
           </Route>
 
-          <Route exact path='*'>
+          <Route exact path='/game'>
+            <CardContainer />
+          </Route>
+
+          <Route exact path='/'>
             <Homepage isGuest={this.isGuest} />
           </Route>
         </Switch>

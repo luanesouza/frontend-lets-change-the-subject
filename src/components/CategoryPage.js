@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Route } from 'react-router-dom';
 import CardContainer from './CardContainer';
 import { getCategories, getQuestions } from '../utils';
 
@@ -49,15 +49,13 @@ class CategoryPage extends Component {
     } else {
       const data = await getQuestions(chosenCategory)
 
+      localStorage.setItem('chosenQuestions', JSON.stringify(data))
+
       this.setState({
         chosenQuestions: data.questions
       })
-
     }
-  }
-
-  skipQuestion = (action) => {
-    console.log(action);
+    this.props.history.push('/game')
   }
 
 
@@ -69,18 +67,11 @@ class CategoryPage extends Component {
     return(
 
       <section className='CategoryPage'>
-          {
-            this.state.chosenQuestions.length > 0
 
-            ?
-
-              <CardContainer cards={this.state.chosenQuestions}/>
-            :
-
-            <>
-              { categoryButtons }
-            </>
-          }
+        <>
+          <h3> Select a category </h3>
+          { categoryButtons }
+        </>
 
       </section>
     )

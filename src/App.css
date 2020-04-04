@@ -36,6 +36,7 @@ html {
 .CategoryPage {
   display: flex;
   flex-direction: column;
+  align-items: center;
   box-sizing: border-box;
   width: 100%;
 }
@@ -48,6 +49,26 @@ html {
   border: none;
   padding: 10%;
   margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+#options {
+  width: 40%;
+  margin-top: 30%;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  height: 40%;
+}
+
+.nav-button > button {
+  margin: none;
+  border: none;
+  background-color: inherit;
+  width: 10%;
+  height: 10%;
 }
 /* ------------------ */
 
@@ -59,12 +80,17 @@ html {
     justify-content: center;
   }
 
+  #left {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+
   .card-buttons > button {
-    background-color: gray;
+    background-color: inherit;
     border: none;
     width: 100%;
     height: 3rem;
-    margin: 5px;
+    margin-top: 3rem;
   }
 
   .card-container {
@@ -74,35 +100,45 @@ html {
     justify-content: center; */
   }
 
+  #choice-button > img {
+    width: 25%;
+  }
+
   #card-info {
-    background-color: lightgray;
-    height: 80vh;
+    height: 60vh;
     width: 100%;
-    font-size: 2rem;
-    padding: 30% 10%;
+    font-size: 1.7rem;
+    padding: 10% 4%;
   }
 
   #card-content {
     text-align: center;
   }
+  #card-peppers {
+    border: 5px solid ;
+  }
 
   #card {
+    background-color: lightgray;
     display: inherit;
-    height: 90%;
+    height: 100%;
+    border-top: 2px solid gray;
+    border-left: 1.5px solid gray;
+    border-right: .5px solid gray;
+    padding: 30% 8%;
   }
 
   .peppers {
-    display: flex;
-    flex-direction: row;
-    margin-left: 60%;
-
+    background-color: lightgray;
+    text-align: right;
+    border-bottom: 5px solid gray;
+    border-left: 1.5px solid gray;
   }
 
   #hot-pepper {
-    width: 40%;
-    height: auto;
-    right: 0;
+    height: 45px;
     position:static;
+    transform: rotate(35deg)
   }
 /* ------------------ */
 
@@ -150,8 +186,8 @@ html {
   padding: 1rem;
   border-radius: 15px;
   border: none;
-  border-left: 1px solid black;
-  border-bottom: 1px solid black;
+  border-left: 1px solid gray;
+  border-bottom: 1px solid gray;
 }
 
 .input-section > input:focus {
