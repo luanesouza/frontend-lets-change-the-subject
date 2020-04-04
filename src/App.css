@@ -84,7 +84,23 @@ html {
   }
 /* ------------------ */
 
-/* ----- Login Form ----- */
+/* ----- Login & Signup Forms ----- */
+
+.SignupForm {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.SignupForm > input[type='submit'] {
+  background-color: lightgray;
+  padding: 10px;
+  border-radius: 15px;
+  margin-top: 1rem;
+}
 
 .LoginForm {
   display: flex;

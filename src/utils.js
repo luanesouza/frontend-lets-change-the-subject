@@ -20,6 +20,19 @@ const getLoginData = async (user_id) => {
   return response.data;
 }
 
+const createNewUser = async (data) => {
+  const response = await axios.post(`${BASE_URL}/users`, data);
+  console.log(response);
+  return response.data
+}
+
+let user = {
+  username: 'louise',
+  email: 'louise@email.com'
+}
+
+// createNewUser(user)
+
 // const getUserQuestion = async (user_id) => {
 //   const response = await axios()
 // }
@@ -44,4 +57,4 @@ const getLoginData = async (user_id) => {
 //   console.log(response.data);
 // }
 
-export { getCategories, getQuestions, getLoginData }
+export { getCategories, getQuestions, getLoginData, createNewUser }

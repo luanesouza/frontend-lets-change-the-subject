@@ -41,13 +41,14 @@ class CategoryPage extends Component {
     let isGuest = JSON.parse(localStorage.isGuest)
     if(!isGuest) {
       let choice = localStorage.getItem(chosenCategory)
-
+      console.log(chosenCategory);
       this.setState({
         chosenQuestions: JSON.parse(choice)
       })
 
     } else {
       const data = await getQuestions(chosenCategory)
+      console.log(data);
       console.log(data);
       this.setState({
         chosenQuestions: data.questions

@@ -5,7 +5,7 @@ export default class LoginForm extends Component {
   render() {
     console.log(this.props);
     return(
-      <form className='LoginForm' onSubmit={(evt) => this.props.handleSubmit(evt)}>
+      <form className='LoginForm' onSubmit={(evt, action) => this.props.handleSubmit(evt, 'login')}>
         <section className='input-section'>
           <label> Username </label>
           <input
