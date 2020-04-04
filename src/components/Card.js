@@ -3,15 +3,24 @@ import React from 'react';
 export default function Card(props){
   console.log('worked', props);
 
+  const howManyPeppers = (amount) => {
+    return [...Array(amount)].map((e, i) => <img id='hot-pepper' src='https://getdrawings.com/free-icon-bw/chili-pepper-icon-1.png' alt='hot-pepper'/> )
+  }
+
   return(
-    <section id='card'>
+    <section id='card-info'>
     {
       props.card
 
       ?
-
-      <p> {props.card.content} </p>
-
+      <>
+        <section id='card'>
+          <p id='card-content'> {props.card.content} </p>
+        </section>
+        <section className='peppers'>
+          {howManyPeppers(props.card.spiciness)}
+        </section>
+      </>
       :
 
       <div>

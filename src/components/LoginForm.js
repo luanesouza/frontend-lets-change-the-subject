@@ -35,7 +35,7 @@ export default class LoginForm extends Component {
         <section className='input-section'>
           <label> Password </label>
           <input
-            type='text'
+            type='password'
             value={this.props.userInfo.password}
             name='password'
             onChange={(event) =>

@@ -74,13 +74,35 @@ html {
     justify-content: center; */
   }
 
-  #card {
+  #card-info {
     background-color: lightgray;
     height: 80vh;
     width: 100%;
-    text-align: center;
     font-size: 2rem;
     padding: 30% 10%;
+  }
+
+  #card-content {
+    text-align: center;
+  }
+
+  #card {
+    display: inherit;
+    height: 90%;
+  }
+
+  .peppers {
+    display: flex;
+    flex-direction: row;
+    margin-left: 60%;
+
+  }
+
+  #hot-pepper {
+    width: 40%;
+    height: auto;
+    right: 0;
+    position:static;
   }
 /* ------------------ */
 
