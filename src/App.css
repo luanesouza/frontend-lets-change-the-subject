@@ -202,3 +202,48 @@ html {
   margin-top: 1rem;
 }
 /* ------------------ */
+
+
+/* ----- GameOver ----- */
+
+
+#GameOver {
+  width: 100vw;
+  height: 100vh;
+  animation-name: transitionScreen;
+  animation-duration: 2s;
+  position:absolute;
+  padding: 5%;
+}
+
+
+@keyframes transitionScreen {
+   0% {
+     right: 100%;
+     opacity: 10%;
+   }
+   50%{
+     right : 0;
+     opacity: 70%;
+   }
+   100% {
+     right: 0;
+     opacity: 100%;
+   }
+}
+
+
+/* ------------------ */
+
+
+/* ----- Login & Signup Forms ----- */
+
+/* ------------------ */
+
+/* ----- Login & Signup Forms ----- */
+
+/* ------------------ */
+
+/* ----- Login & Signup Forms ----- */
+
+/* ------------------ */
