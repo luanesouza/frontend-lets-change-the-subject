@@ -20,6 +20,10 @@ class App extends Component {
     error: ''
   }
 
+  componentDidMount(){
+    localStorage.clear()
+  }
+
   handleChange(event){
     const { name, value } = event.target
     this.setState(() => ({

@@ -6,13 +6,9 @@ function CardContainer(props){
 
   let cachedCards = JSON.parse(localStorage.chosenQuestions)
 
-  let skippedQs = [];
-  let answeredQs = [];
   const [currentQuestion, setCurrentQuestion] = useState(cachedCards[0])
 
   const showOneCard = (evt, questionsLeft) => {
-    console.log(questionsLeft);
-    console.log(questionsLeft[0]);
 
     if(questionsLeft[0]) {
       console.log(questionsLeft);
@@ -27,20 +23,21 @@ function CardContainer(props){
   const getAction = (evt, action) => {
     evt.preventDefault()
 
+    let questionsLeft = cachedCards.filter(current => {
+      return currentQuestion.id !== current.id
+    })
+    localStorage.setItem('chosenQuestions', JSON.stringify(questionsLeft))
+    showOneCard(evt, questionsLeft)
+
     if( action === 'answered') {
+      const questionsAnswered = JSON.parse(localStorage.getItem('answeredQuestions'))
+      const question = [questionsAnswered, ...[currentQuestion]];
+      localStorage.setItem('answeredQuestions', JSON.stringify(question));
 
-      let qsleft = cachedCards.filter(current => {
-        console.log('currentQuestion', currentQuestion, current);
-        return currentQuestion.id !== current.id
-
-      })
-      answeredQs.push(currentQuestion)
-      console.log(qsleft);
-      localStorage.setItem('chosenQuestions', JSON.stringify(qsleft))
-      showOneCard(evt, qsleft)
-      return qsleft
     } else {
-      skippedQs.push(currentQuestion)
+        const questionsSkipped = JSON.parse(localStorage.getItem('skippedQuestions'))
+        const question = [questionsSkipped, ...[currentQuestion]];
+        localStorage.setItem('skippedQuestions', JSON.stringify(question));
     }
   }
 
