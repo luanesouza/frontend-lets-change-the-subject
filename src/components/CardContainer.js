@@ -15,7 +15,7 @@ function CardContainer(props){
       return setCurrentQuestion(questionsLeft[0])
     } else {
       console.log('all done');
-      // props.history.push('/play-again')
+      props.history.push('/play-again')
     }
 
   }

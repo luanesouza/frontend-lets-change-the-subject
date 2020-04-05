@@ -22,6 +22,7 @@ class App extends Component {
 
   componentDidMount(){
     localStorage.clear()
+    this.props.history.push('/')
   }
 
   handleChange(event){
