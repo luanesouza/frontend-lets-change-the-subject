@@ -14,11 +14,12 @@ function CardContainer(props){
     console.log(questionsLeft);
     console.log(questionsLeft[0]);
 
-    if(!questionsLeft.length[0]) {
-      return setCurrentQuestion(questionsLeft[questionsLeft.length])
+    if(questionsLeft[0]) {
+      console.log(questionsLeft);
+      return setCurrentQuestion(questionsLeft[0])
     } else {
       console.log('all done');
-      props.history.push('/play-again')
+      // props.history.push('/play-again')
     }
 
   }
@@ -27,8 +28,14 @@ function CardContainer(props){
     evt.preventDefault()
 
     if( action === 'answered') {
-      let qsleft = cachedCards.filter(current => currentQuestion.id !== current.id)
+
+      let qsleft = cachedCards.filter(current => {
+        console.log('currentQuestion', currentQuestion, current);
+        return currentQuestion.id !== current.id
+
+      })
       answeredQs.push(currentQuestion)
+      console.log(qsleft);
       localStorage.setItem('chosenQuestions', JSON.stringify(qsleft))
       showOneCard(evt, qsleft)
       return qsleft

@@ -8,7 +8,7 @@ const getCategories = async () => {
 
 const getQuestions = async (category) => {
   const response = await axios(`${BASE_URL}/categories/${category}`);
-  console.log('guest questions', response);
+  // console.log('guest questions', response);
   return response.data;
 }
 
