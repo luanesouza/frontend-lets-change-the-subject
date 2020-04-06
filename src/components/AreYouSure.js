@@ -1,12 +1,17 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom'
 
-export default function AreYouSure(props) {
+function AreYouSure(props) {
 
   console.log(props);
 
-  const confirmation = (evt) => {
+  const confirmation = (evt, action) => {
     evt.preventDefault()
-    console.log(props.isUserLeaving(false))
+    if(action === 'stay'){
+      props.isUserLeaving(false)
+    } else {
+      props.history.push('/play-again')
+    }
   }
 
   return(
@@ -14,10 +19,12 @@ export default function AreYouSure(props) {
       <section className='confirmation-content'>
         <h4> Sure you'd like to leave this conversation?</h4>
         <section className='sure-buttons'>
-          <button> YES </button>
-          <button onClick={(evt) => confirmation(evt)}> NO </button>
+          <button onClick={(evt, action) => confirmation(evt, 'exit')}> YES </button>
+          <button onClick={(evt, action) => confirmation(evt, 'stay')}> NO </button>
         </section>
       </section>
     </section>
   )
 }
+
+export default withRouter(AreYouSure)
