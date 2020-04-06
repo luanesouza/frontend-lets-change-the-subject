@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
+import AreYouSure from './AreYouSure';
 import { withRouter, Route } from 'react-router-dom';
 
 function CardContainer(props){
@@ -7,6 +8,7 @@ function CardContainer(props){
   let cachedCards = JSON.parse(localStorage.chosenQuestions)
 
   const [currentQuestion, setCurrentQuestion] = useState(cachedCards[0])
+  const [leaving, isUserLeaving] = useState(false)
 
   const showOneCard = (evt, questionsLeft) => {
 
@@ -47,7 +49,7 @@ function CardContainer(props){
       break;
       case 'profile': console.log('not ready');
       break;
-      case 'completion': console.log('working on it');
+      case 'completion': isUserLeaving(true);
       break;
     }
   }
@@ -79,6 +81,13 @@ function CardContainer(props){
           <img src='https://image.flaticon.com/icons/png/512/130/130884.png' alt='right'/>
         </button>
       </div>
+      {
+        leaving
+        ?
+        <AreYouSure isUserLeaving={isUserLeaving} leaving={leaving}/>
+        :
+        null
+      }
     </section>
   )
 }
