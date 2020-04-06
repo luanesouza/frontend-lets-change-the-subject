@@ -28,13 +28,13 @@ function CardContainer(props){
     showOneCard(evt, questionsLeft)
 
     if( action === 'answered') {
-      const questionsAnswered = JSON.parse(localStorage.getItem('answeredQuestions'))
-      const question = [questionsAnswered, ...[currentQuestion]];
+      const questionsAnswered = JSON.parse(localStorage.getItem('answeredQuestions')) || [];
+      const question = [ currentQuestion, ...questionsAnswered ];
       localStorage.setItem('answeredQuestions', JSON.stringify(question));
 
     } else {
-        const questionsSkipped = JSON.parse(localStorage.getItem('skippedQuestions'))
-        const question = [questionsSkipped, ...[currentQuestion]];
+        const questionsSkipped = JSON.parse(localStorage.getItem('skippedQuestions')) || [];
+        const question = [currentQuestion, ...questionsSkipped];
         localStorage.setItem('skippedQuestions', JSON.stringify(question));
     }
   }

@@ -15,8 +15,10 @@ export default function GameOver() {
         <br />
         Try exploring more questions...
       </p>
-      <a id='' href='choose-your-adventure'> Star a New Conversation</a>
-      <a> Take me to Profile </a>
+      <section className='navigation-links'>
+        <a href='choose-your-adventure'> Star a New Conversation</a>
+        <a href='/profile'> Take me to Profile </a>
+      </section>
     </section>
   )
 }
