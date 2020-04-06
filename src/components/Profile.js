@@ -10,14 +10,14 @@ export default function Profile(){
       <h4 id='username'> @username </h4>
 
       <section className='profile-settings'>
-        <a>
+        <a href='/profile'>
           <div className='profile-setting-info'>
             <img src='https://i.ya-webdesign.com/images/lock-icon-png-1.png' alt='change-password-icon' />
             <p> Change Password </p>
           </div>
         </a>
 
-        <a>
+        <a href='/profile'>
           <div className='profile-setting-info'>
             <img src='https://image.flaticon.com/icons/png/512/184/184312.png' alt='change-password-icon' />
             <p> Edit Profile </p>

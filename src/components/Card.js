@@ -4,7 +4,7 @@ export default function Card(props){
 
   const howManyPeppers = (amount) => {
 
-    return [...Array(amount)].map((e, i) => <img key={i} id='hot-pepper' src='https://getdrawings.com/free-icon-bw/chili-pepper-icon-19.png'/> )
+    return [...Array(amount)].map((e, i) => <img key={i} id='hot-pepper' src='https://getdrawings.com/free-icon-bw/chili-pepper-icon-19.png' alt='hot-pepper'/> )
   }
 
   return(

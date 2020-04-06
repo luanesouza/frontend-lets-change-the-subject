@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter, Route } from 'react-router-dom';
-import CardContainer from './CardContainer';
+import { withRouter} from 'react-router-dom';
 import { getCategories, getQuestions } from '../utils';
 
 class CategoryPage extends Component {

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Card from './Card';
 import AreYouSure from './AreYouSure';
-import { withRouter, Route } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 function CardContainer(props){
 
@@ -47,10 +47,11 @@ function CardContainer(props){
     switch(action) {
       case 'categories': props.history.push('/choose-your-adventure')
       break;
-      case 'profile': console.log('not ready');
+      case 'profile': props.history.push('/profile');
       break;
       case 'completion': isUserLeaving(true);
       break;
+      default: isUserLeaving(false);
     }
   }
 
