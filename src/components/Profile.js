@@ -1,13 +1,25 @@
 import React from 'react';
+import BackButton from './BackButton';
+import { withRouter } from 'react-router-dom';
 
-export default function Profile(){
+function Profile(props){
+  const username = JSON.parse(localStorage.current_user)
+
+  const profileRouter = (action) => {
+    if(action === 'change password') {
+      console.log('change password');
+    } else if(action === 'logout'){
+      localStorage.clear()
+      props.history.push('/')
+    } else{
+      console.log('edit profile');
+    }
+  }
 
   return(
     <section className='Profile'>
-      <a href='/choose-your-adventure'>
-        <img src='https://s3.us-east-2.amazonaws.com/upload-icon/uploads/icons/png/13287388471540882596-512.png' id='back-button' alt='back-button'/>
-      </a>
-      <h4 id='username'> @username </h4>
+      <BackButton />
+      <h4 id='username-display'> @{username} </h4>
 
       <section className='profile-settings'>
         <a href='/profile'>
@@ -35,3 +47,4 @@ export default function Profile(){
   )
 
 }
+export default withRouter(Profile);

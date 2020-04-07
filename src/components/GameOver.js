@@ -1,23 +1,35 @@
 import React from 'react';
 
 export default function GameOver() {
+  const isGuest = JSON.parse(localStorage.isGuest);
+  const current_user = !!localStorage.current_user ? JSON.parse(localStorage.current_user) : 'friend';
 
-  const current_user = 'John Doe'
-  // const questions_category = JSON.parse(localStorage.chosenCategory) || 'friends';
-  const questions_category = 'friends';
+  const questions_category = !!localStorage.chosenCategory ? ` with your ${JSON.parse(localStorage.chosenCategory)}` : true;
 
-  // Had to
   return(
     <section id='GameOver'>
-      <h3>Congratulations, {current_user}! </h3>
+      {
+        isGuest
+        ?
+        <h3>Congratulations! </h3>
+        :
+        <h3>Congratulations, {current_user}! </h3>
+      }
       <p>
-        You've talked with your {questions_category} about different topics, from food to love.
+        You've talked {questions_category} about different topics, from food to love.
+        <br />
         <br />
         Try exploring more questions...
       </p>
       <section className='navigation-links'>
         <a href='choose-your-adventure'> Star a New Conversation</a>
-        <a href='/profile'> Take me to Profile </a>
+        {
+          isGuest
+          ?
+          <a href='/signup'> Sign Up </a>
+          :
+          <a href='/profile'> Take me to Profile </a>
+        }
       </section>
     </section>
   )

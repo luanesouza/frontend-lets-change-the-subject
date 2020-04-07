@@ -22,8 +22,8 @@ class App extends Component {
   }
 
   componentDidMount(){
-    localStorage.clear()
-    this.props.history.push('/')
+    // localStorage.clear()
+    // this.props.history.push('/')
   }
 
   handleChange(event){
@@ -47,11 +47,11 @@ class App extends Component {
     if(username && password && email) {
       localStorage.clear()
       { action === 'login' ? data = await getLoginData(3) : data = await createNewUser({username, password, email}) }
-
       localStorage.setItem('isGuest', JSON.stringify(false))
       localStorage.setItem('friends', JSON.stringify(data.remainingFriendsQs) )
       localStorage.setItem('coworkers', JSON.stringify(data.remainingCoworkersQs) )
-      localStorage.setItem('partners', JSON.stringify(data.remainingPartnersQs) )
+      localStorage.setItem('partner', JSON.stringify(data.remainingPartnersQs) )
+      localStorage.setItem('current_user', JSON.stringify(data.username))
       this.props.history.push('/choose-your-adventure')
     } else {
       this.setState({

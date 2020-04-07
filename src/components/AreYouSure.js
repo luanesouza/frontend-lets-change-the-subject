@@ -3,7 +3,6 @@ import { withRouter } from 'react-router-dom'
 
 function AreYouSure(props) {
 
-  console.log(props);
 
   const confirmation = (evt, action) => {
     evt.preventDefault()

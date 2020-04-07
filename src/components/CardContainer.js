@@ -76,10 +76,12 @@ function CardContainer(props){
       </div>
       <div className='card-buttons'>
         <button id='choice-button' onClick={(evt) => getAction(evt, 'skip')}>
-          <img id='left' src='https://image.flaticon.com/icons/png/512/130/130884.png' alt='right'/>
+          <img id='' src='https://img.icons8.com/ios/500/dislike.png' alt='left'/>
+          <p>Skip</p>
         </button>
         <button id='choice-button' onClick={(evt) => getAction(evt, 'answered')}>
           <img src='https://image.flaticon.com/icons/png/512/130/130884.png' alt='right'/>
+          <p>Next</p>
         </button>
       </div>
       {

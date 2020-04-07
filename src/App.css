@@ -2,6 +2,11 @@ html {
   margin: 1%;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -125,7 +130,7 @@ html {
     border-top: 2px solid gray;
     border-left: 1.5px solid gray;
     border-right: .5px solid gray;
-    padding: 30% 8%;
+    padding: 10% 8%;
   }
 
   .peppers {
@@ -145,12 +150,12 @@ html {
 /* ----- Login & Signup Forms ----- */
 
 .SignupForm {
-  margin-top: 5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin-top: 2.5rem;
 }
 
 .SignupForm > input[type='submit'] {
@@ -160,13 +165,17 @@ html {
   margin-top: 1rem;
 }
 
+.SignupForm > a {
+  margin-top: 2.5rem;
+}
+
 .LoginForm {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 5rem;
+  margin-top: 3.5rem;
 }
 
 .input-section {
@@ -279,7 +288,7 @@ html {
   height: 100vh;
 }
 
-#username {
+#username-display {
   padding-top: 20%;
   text-align: center;
 }
@@ -308,7 +317,7 @@ html {
 }
 
 #back-button {
-  width: 2.5em;
+  width: 2em;
   text-align: left;
   margin-left: 4%;
   margin-top: 4%;

@@ -8,19 +8,16 @@ const getCategories = async () => {
 
 const getQuestions = async (category) => {
   const response = await axios(`${BASE_URL}/categories/${category}`);
-  // console.log('guest questions', response);
   return response.data;
 }
 
 const getLoginData = async (user_id) => {
   const response = await axios(`${BASE_URL}/users/${user_id}`);
-  console.log('login response', response);
   return response.data;
 }
 
 const createNewUser = async (data) => {
   const response = await axios.post(`${BASE_URL}/users`, data);
-  console.log('signup', response);
   return response.data
 }
 
