@@ -44,20 +44,31 @@ class App extends Component {
   getLoginOrSignupInfo = async (action) => {
     const {username, password, email} = this.state.userInfo
     let data;
-    if(username && password && email) {
+    if(username && password && action === 'login') {
       localStorage.clear()
-      { action === 'login' ? data = await getLoginData(3) : data = await createNewUser({username, password, email}) }
-      localStorage.setItem('isGuest', JSON.stringify(false))
-      localStorage.setItem('friends', JSON.stringify(data.remainingFriendsQs) )
-      localStorage.setItem('coworkers', JSON.stringify(data.remainingCoworkersQs) )
-      localStorage.setItem('partner', JSON.stringify(data.remainingPartnersQs) )
-      localStorage.setItem('current_user', JSON.stringify(data.username))
-      this.props.history.push('/choose-your-adventure')
+      data = await getLoginData(username, password)
+      {data.failure ? this.hasError(data.failure) : this.setLocalStorage(data)}
+      this.clearFormInputs()
+      return data;
+    } else if(username && password && email && action === 'signup') {
+      data = await createNewUser({username, password, email})
+      this.setLocalStorage(data)
+      this.clearFormInputs()
+      return data;
     } else {
+
       this.setState({
         error: 'please fill out the inputs'
       })
     }
+    this.clearFormInputs()
+  }
+
+  hasError = (error) => {
+    console.log(error);
+    this.setState({
+      error
+    })
     this.clearFormInputs()
   }
 
@@ -67,8 +78,18 @@ class App extends Component {
         username: '',
         password: '',
         email: '',
-      }
+      },
+      error: ''
     })
+  }
+
+  setLocalStorage = (data) => {
+    localStorage.setItem('isGuest', JSON.stringify(false))
+    localStorage.setItem('friends', JSON.stringify(data.remainingFriendsQs) )
+    localStorage.setItem('coworkers', JSON.stringify(data.remainingCoworkersQs) )
+    localStorage.setItem('partner', JSON.stringify(data.remainingPartnersQs) )
+    localStorage.setItem('current_user', JSON.stringify(data.username))
+    this.props.history.push('/choose-your-adventure')
   }
 
 
@@ -100,11 +121,11 @@ class App extends Component {
           </Route>
 
           <Route path='/login'>
-            <LoginForm handleSubmit={(evt, action) => this.handleSubmit(evt, action)} handleChange={(evt) => this.handleChange(evt)} userInfo={this.state.userInfo} />
+            <LoginForm error={this.state.error} handleSubmit={(evt, action) => this.handleSubmit(evt, action)} handleChange={(evt) => this.handleChange(evt)} userInfo={this.state.userInfo} />
           </Route>
 
           <Route path='/signup'>
-            <SignupForm handleSubmit={(evt, action) => this.handleSubmit(evt, action)} handleChange={(evt) => this.handleChange(evt)} userInfo={this.state.userInfo} />
+            <SignupForm error={this.state.error} handleSubmit={(evt, action) => this.handleSubmit(evt, action)} handleChange={(evt) => this.handleChange(evt)} userInfo={this.state.userInfo} />
           </Route>
 
           <Route exact path='/game'>

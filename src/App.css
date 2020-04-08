@@ -12,6 +12,25 @@ a {
 }
 
 
+#error {
+  background-color: rgba(247, 23, 53, .7);
+  text-align: center;
+  padding: 1rem;
+  color: white;
+  font-size: 1.2rem;
+  animation-name: error;
+  animation-duration: 3s;
+}
+
+@keyframes error {
+   0% {
+     opacity: 0;
+   }
+
+   100% {
+     opacity:1;
+   }
+}
 /* ----- Homepage ----- */
 .Homepage {
   text-align: center;

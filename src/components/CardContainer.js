@@ -47,7 +47,10 @@ function CardContainer(props){
     switch(action) {
       case 'categories': props.history.push('/choose-your-adventure')
       break;
-      case 'profile': props.history.push('/profile');
+      case 'profile':
+      if(localStorage.current_user) {
+        props.history.push('/profile');
+      }
       break;
       case 'completion': isUserLeaving(true);
       break;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BackButton from './BackButton';
+import Error from './Error';
 
 export default class SignupForm extends Component {
 
@@ -8,6 +9,7 @@ export default class SignupForm extends Component {
     return(
       <form onSubmit={(evt, action) => this.props.handleSubmit(evt, 'signup')}>
         <BackButton />
+        <Error error={this.props.error}/>
         <section className='SignupForm'>
           <section className='input-section'>
             <label htmlFor='username'> Username </label>

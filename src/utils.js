@@ -11,13 +11,22 @@ const getQuestions = async (category) => {
   return response.data;
 }
 
-const getLoginData = async (user_id) => {
-  const response = await axios(`${BASE_URL}/users/${user_id}`);
-  return response.data;
-}
+const getLoginData = async (username, password) => {
+  const response = await axios.post(`${BASE_URL}/login`);
+  if(response.failure){
+    console.log('try again');
+    return response.failure;
+  } else {
+
+    console.log(response);
+    return response.data;
+    }
+  }
 
 const createNewUser = async (data) => {
   const response = await axios.post(`${BASE_URL}/users`, data);
+  console.log(response);
+  debugger;
   return response.data
 }
 

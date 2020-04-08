@@ -3,9 +3,14 @@ import BackButton from './BackButton';
 import { withRouter } from 'react-router-dom';
 
 function Profile(props){
-  const username = JSON.parse(localStorage.current_user)
+  let username;
+  if(localStorage.current_user) {
+    username = JSON.parse(localStorage.current_user);
+    return username;
+  }
 
-  const profileRouter = (action) => {
+  const profileRouter = (evt, action) => {
+    evt.preventDefault()
     if(action === 'change password') {
       console.log('change password');
     } else if(action === 'logout'){
@@ -22,26 +27,26 @@ function Profile(props){
       <h4 id='username-display'> @{username} </h4>
 
       <section className='profile-settings'>
-        <a href='/profile'>
+        <button onClick={(evt, action) => profileRouter(evt, '')}>
           <div className='profile-setting-info'>
             <img src='https://i.ya-webdesign.com/images/lock-icon-png-1.png' alt='change-password-icon' />
             <p> Change Password </p>
           </div>
-        </a>
+        </button>
 
-        <a href='/profile'>
+        <button onClick={(evt, action) => profileRouter(evt, '')}>
           <div className='profile-setting-info'>
             <img src='https://image.flaticon.com/icons/png/512/184/184312.png' alt='change-password-icon' />
             <p> Edit Profile </p>
           </div>
-        </a>
+        </button>
 
-        <a href='/'>
+        <button onClick={(evt, action) => profileRouter(evt, 'logout')} >
           <div className='profile-setting-info'>
             <img src='https://www.pngrepo.com/download/83317/log-out.png' alt='change-password-icon' />
             <p> Log Out </p>
           </div>
-        </a>
+        </button>
       </section>
     </section>
   )
