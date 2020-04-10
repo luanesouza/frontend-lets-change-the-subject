@@ -46,11 +46,13 @@ class App extends Component {
     let data;
     if(username && password && action === 'login') {
       localStorage.clear()
+      
       data = await getLoginData(username, password)
       {data.failure ? this.hasError(data.failure) : this.setLocalStorage(data)}
       this.clearFormInputs()
       return data;
     } else if(username && password && email && action === 'signup') {
+      
       data = await createNewUser({username, password, email})
       this.setLocalStorage(data)
       this.clearFormInputs()

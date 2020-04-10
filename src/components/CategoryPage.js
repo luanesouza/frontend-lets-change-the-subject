@@ -21,7 +21,8 @@ class CategoryPage extends Component {
 
   setCategories = async () => {
     if(!localStorage.categories){
-      const categories = await getCategories()
+      const data = await getCategories()
+      let categories =  data[0] ? data : ['friends', 'coworkers', 'partner']
       localStorage.setItem('categories', JSON.stringify(categories))
 
       this.setState({
