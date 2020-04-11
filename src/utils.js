@@ -12,7 +12,12 @@ const getQuestions = async (category) => {
 }
 
 const getLoginData = async (username, password) => {
-  const response = await axios.post(`${BASE_URL}/login`);
+  const data = {
+    username: username, 
+    password: password,
+    
+  }
+  const response = await axios.post(`${BASE_URL}/login`, data);
   if(response.failure){
     console.log('try again');
     return response.failure;
