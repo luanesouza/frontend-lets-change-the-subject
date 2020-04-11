@@ -14,7 +14,7 @@ const getQuestions = async (category) => {
 const getLoginData = async (username, password) => {
   const data = {
     username: username, 
-    password: password,
+    password_digest: password,
     
   }
   const response = await axios.post(`${BASE_URL}/login`, data);

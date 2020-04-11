@@ -30,7 +30,7 @@ export default class LoginForm extends Component {
             <input
               type='password'
               value={this.props.userInfo.password}
-              name='password'
+              name='password_digest'
               onChange={(event) =>
                 this.props.handleChange(event)}
               placeholder='Enter Your Password'

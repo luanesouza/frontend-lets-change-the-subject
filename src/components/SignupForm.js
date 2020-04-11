@@ -46,7 +46,7 @@ export default class SignupForm extends Component {
               id='password'
               type='password'
               value={this.props.userInfo.password}
-              name='password'
+              name='password_digest'
               onChange={(event) =>
                 this.props.handleChange(event)}
               autoComplete='off'

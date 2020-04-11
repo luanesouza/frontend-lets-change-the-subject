@@ -15,7 +15,7 @@ class App extends Component {
   state = {
     userInfo: {
       username: '',
-      password: '',
+      password_digest: '',
       email: '',
     },
     error: ''
@@ -42,16 +42,16 @@ class App extends Component {
   }
 
   getLoginOrSignupInfo = async (action) => {
-    const {username, password, email} = this.state.userInfo
+    const {username, password_digest, email} = this.state.userInfo
     let data;
-    if(username && password && action === 'login') {
+    if(username && password_digest && action === 'login') {
       localStorage.clear()
-      data = await getLoginData(username, password)
+      data = await getLoginData(username, password_digest)
       {data.failure ? this.hasError(data.failure) : this.setLocalStorage(data)}
       this.clearFormInputs()
       return data;
-    } else if(username && password && email && action === 'signup') {
-      data = await createNewUser({username, password, email})
+    } else if(username && password_digest && email && action === 'signup') {
+      data = await createNewUser({username, password_digest, email})
       this.setLocalStorage(data)
       this.clearFormInputs()
       return data;
