@@ -22,7 +22,7 @@ function Profile(props){
       console.log('edit profile');
     }
   }
-  console.log('loading');
+
   return(
     <section className='Profile'>
       <BackButton />

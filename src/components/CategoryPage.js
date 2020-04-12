@@ -13,6 +13,17 @@ class CategoryPage extends Component {
     this.setCategories()
   }
 
+  whichImage = (category) => {
+    if(category === 'friends'){
+      return(<img src='https://image.flaticon.com/icons/svg/2058/2058666.svg'/>)
+    }else if(category === 'coworkers'){
+      return(<img src='https://image.flaticon.com/icons/svg/1965/1965765.svg'/>)
+    } else{
+      return(<img src='https://image.flaticon.com/icons/svg/1029/1029183.svg'/>)
+    }
+
+  }
+
   whatCards = (evt, category) => {
     evt.preventDefault()
 
@@ -39,29 +50,35 @@ class CategoryPage extends Component {
   }
 
   setQuestions = async (chosenCategory) => {
-    let isGuest = JSON.parse(localStorage.isGuest)
-    if(!isGuest) {
-      let choice = JSON.parse(localStorage.chosenCategory)
-
-      this.setState({
-        chosenQuestions: choice
-      })
-      localStorage.chosenQuestions = localStorage.getItem(choice)
-      localStorage.chosenCategory = chosenCategory;
-
-    } else {
-      const data = await getQuestions(chosenCategory)
-      console.log(data);
-      localStorage.setItem('chosenQuestions', JSON.stringify(data.questions))
-      localStorage.setItem('chosenCategory', JSON.stringify(data.name))
-    }
+    const data = await getQuestions(chosenCategory)
+    localStorage.setItem('chosenQuestions', JSON.stringify(data.questions))
+    localStorage.setItem('chosenCategory', JSON.stringify(data.name))
+    
+    // let isGuest = JSON.parse(localStorage.isGuest)
+    // if(!isGuest) {
+    //   let choice = JSON.parse(localStorage.chosenCategory)
+    //
+    //   this.setState({
+    //     chosenQuestions: choice
+    //   })
+    //   localStorage.chosenQuestions = localStorage.getItem(choice)
+    //   localStorage.chosenCategory = chosenCategory;
+    //
+    // } else {
+    //   const data = await getQuestions(chosenCategory)
+    //   localStorage.setItem('chosenQuestions', JSON.stringify(data.questions))
+    //   localStorage.setItem('chosenCategory', JSON.stringify(data.name))
+    // }
     this.props.history.push('/game')
   }
 
 
   render() {
     const categoryButtons = this.state.categories.map( category => {
-      return <button id='category-button' onClick={(evt) => this.whatCards(evt, category.name)} key={category.id}> Talk with {category.name} </button>
+      return <button className='border-gradient' id='category-button' onClick={(evt) => this.whatCards(evt, category.name)} key={category.id}>
+                {this.whichImage(category.name)}
+                <p>Talk with {category.name}</p>
+              </button>
     })
 
     return(

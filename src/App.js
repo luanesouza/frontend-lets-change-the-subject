@@ -108,19 +108,20 @@ class App extends Component {
 
   isGuest = (evt, status) => {
     // create conditionals that will redirect user depending on status
+    localStorage.clear()
     evt.preventDefault()
-
-    if(status === 'guest') {
-      localStorage.clear()
-      this.props.history.push('/choose-your-adventure');
-
-      localStorage.setItem('isGuest', JSON.stringify(true))
-    } else if(status === 'login'){
-      this.props.history.push('/login');
-
-    } else {
-      this.props.history.push('/signup');
-    }
+    this.props.history.push('/choose-your-adventure');
+    // if(status === 'guest') {
+    //   localStorage.clear()
+    //   this.props.history.push('/choose-your-adventure');
+    //
+    //   localStorage.setItem('isGuest', JSON.stringify(true))
+    // } else if(status === 'login'){
+    //   this.props.history.push('/login');
+    //
+    // } else {
+    //   this.props.history.push('/signup');
+    // }
   }
 
   render() {

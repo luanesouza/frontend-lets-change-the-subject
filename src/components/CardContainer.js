@@ -52,29 +52,15 @@ function CardContainer(props){
   }
 
   return(
-    <section>
-      <section className='nav-buttons'>
-        <button onClick= {(evt, action) => navButtons(evt, 'categories')}>
-          <img id='options' src='https://www.pngrepo.com/download/100528/four-squares-button-of-view-options.png' alt='options'/>
-        </button>
-
-        <button onClick= {(evt, action) => navButtons(evt, 'profile')}>
-          <img id='options' src='https://pngimage.net/wp-content/uploads/2018/06/gray-square-png-5.png' alt='options'/>
-        </button>
-
-        <button onClick= {(evt, action) => navButtons(evt, 'completion')}>
-          <img id='options' src='https://image.flaticon.com/icons/png/512/16/16116.png' alt='options'/>
-        </button>
-      </section>
+    <section >
+      <button onClick= {(evt, action) => navButtons(evt, 'completion')}>
+        <img id='options' src='https://cdn4.iconfinder.com/data/icons/geomicons/32/672366-x-512.png' alt='options'/>
+      </button>
 
       <div className='card-container'>
         <Card card={currentQuestion} />
       </div>
       <div className='card-buttons'>
-        <button id='choice-button' onClick={(evt) => getAction(evt, 'skip')}>
-          <img id='' src='https://img.icons8.com/ios/500/dislike.png' alt='left'/>
-          <p>Skip</p>
-        </button>
         <button id='choice-button' onClick={(evt) => getAction(evt, 'answered')}>
           <img src='https://image.flaticon.com/icons/png/512/130/130884.png' alt='right'/>
           <p>Next</p>
