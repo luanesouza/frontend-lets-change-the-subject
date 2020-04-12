@@ -68,7 +68,7 @@ class App extends Component {
   }
 
   hasError = (error) => {
-    console.log(error);
+
     this.setState({
       error
     })
@@ -150,10 +150,6 @@ class App extends Component {
 
           <Route exact path='/profile'>
             <Profile />
-          </Route>
-
-          <Route exact path='/skipped'>
-            <Skipped />
           </Route>
 
           <Route exact path='/'>

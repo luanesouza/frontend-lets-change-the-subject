@@ -387,14 +387,32 @@ a {
 
 .Skipped > img {
   width: 50%;
-
 }
 
 .Skipped {
   text-align: center;
-  margin-top: 50%;
   height: 50vh;
-  border: 3px solid black;
+  padding-top: 30%;
+  animation: turn-card 2s;
+  border-top: 2px solid gray;
+  border-left: 1.5px solid gray;
+  border-right: .5px solid gray;
+  margin: 10% 4%;
+
 }
+
+@keyframes turn-card {
+  0% {
+    opacity: 0;
+  }
+  50%{
+    opacity: 90%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+
 
 /* ------------------ */

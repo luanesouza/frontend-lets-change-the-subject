@@ -14,15 +14,15 @@ function Profile(props){
   const profileRouter = (evt, action) => {
     evt.preventDefault()
     if(action === 'change password') {
-      console.log('change password');
+       console.log('change password');
     } else if(action === 'logout'){
       localStorage.clear()
       props.history.push('/')
     } else{
-      console.log('edit profile');
+       console.log('edit profile');
     }
   }
-  console.log('loading');
+   console.log('loading');
   return(
     <section className='Profile'>
       <BackButton />

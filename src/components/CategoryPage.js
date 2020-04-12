@@ -51,7 +51,6 @@ class CategoryPage extends Component {
 
     } else {
       const data = await getQuestions(chosenCategory)
-      console.log(data);
       localStorage.setItem('chosenQuestions', JSON.stringify(data.questions))
       localStorage.setItem('chosenCategory', JSON.stringify(data.name))
     }
@@ -60,8 +59,8 @@ class CategoryPage extends Component {
 
 
   render() {
-    const categoryButtons = this.state.categories.map( category => {
-      return <button id='category-button' onClick={(evt) => this.whatCards(evt, category.name)} key={category.id}> Talk with {category.name} </button>
+    const categoryButtons = this.state.categories.map( (category, idx) => {
+      return <button id='category-button' onClick={(evt) => this.whatCards(evt, category.name)} key={idx}> Talk with {category.name} </button>
     })
 
     return(

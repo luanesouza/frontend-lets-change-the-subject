@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Card from './Card';
+import Skipped from './Skipped';
 import AreYouSure from './AreYouSure';
 import { withRouter } from 'react-router-dom';
 
@@ -9,6 +10,7 @@ function CardContainer(props){
 
   const [currentQuestion, setCurrentQuestion] = useState(cachedCards[0])
   const [leaving, isUserLeaving] = useState(false)
+  const [swiped, swipe] = useState('')
 
   const showOneCard = (evt, questionsLeft) => {
     if(!!questionsLeft[0]) {
@@ -31,11 +33,12 @@ function CardContainer(props){
       const questionsAnswered = JSON.parse(localStorage.getItem('answeredQuestions')) || [];
       const question = [ currentQuestion, ...questionsAnswered ];
       localStorage.setItem('answeredQuestions', JSON.stringify(question));
-
+      swipe('right')
     } else {
         const questionsSkipped = JSON.parse(localStorage.getItem('skippedQuestions')) || [];
         const question = [currentQuestion, ...questionsSkipped];
         localStorage.setItem('skippedQuestions', JSON.stringify(question));
+        swipe('left')
     }
   }
 
@@ -68,7 +71,15 @@ function CardContainer(props){
       </section>
 
       <div className='card-container'>
-        <Card card={currentQuestion} />
+        {
+          swiped
+          ?
+          <Skipped swiped={swiped} swipe={swipe}/>
+          :
+          <Card card={currentQuestion} />
+        }
+
+
       </div>
       <div className='card-buttons'>
         <button id='choice-button' onClick={(evt) => getAction(evt, 'skip')}>
