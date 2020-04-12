@@ -8,7 +8,7 @@ const getCategories = async () => {
 }
 
 const getQuestions = async (category) => {
-  debugger
+
   const response = await axios(`${BASE_URL}/categories/${category}`);
   return response.data;
 }
@@ -18,7 +18,9 @@ const getLoginData = async (username, password) => {
     username: username,
     password: password,
   }
+  debugger
   const response = await axios.post(`${BASE_URL}/login`, data);
+  debugger
   if(response.failure){
     console.log('try again');
     return response.failure;
@@ -39,7 +41,7 @@ const createNewUser = async (data) => {
   body: JSON.stringify(data)
   })
   console.log(response.data);
-  debugger
+
   setToken(response.data.token)
   // login(response.data.user_object.token, response.data.user_object.user.id)
   return response.data.user

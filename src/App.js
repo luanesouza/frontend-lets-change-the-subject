@@ -86,12 +86,21 @@ class App extends Component {
   }
 
   setLocalStorage = (data) => {
-    localStorage.setItem('isGuest', JSON.stringify(false))
-    localStorage.setItem('friends', JSON.stringify(data.remainingFriendsQs) )
-    localStorage.setItem('coworkers', JSON.stringify(data.remainingCoworkersQs) )
-    localStorage.setItem('partner', JSON.stringify(data.remainingPartnersQs) )
-    localStorage.setItem('current_user', JSON.stringify(data.username))
-    this.props.history.push('/choose-your-adventure')
+    if(data.remainingFriendsQs){
+      localStorage.setItem('isGuest', JSON.stringify(false))
+      localStorage.setItem('friends', JSON.stringify(data.remainingFriendsQs) )
+      localStorage.setItem('coworkers', JSON.stringify(data.remainingCoworkersQs) )
+      localStorage.setItem('partner', JSON.stringify(data.remainingPartnersQs) )
+      localStorage.setItem('current_user', JSON.stringify(data.username))
+      this.props.history.push('/choose-your-adventure')
+    } else {
+      localStorage.setItem('isGuest', JSON.stringify(false))
+      localStorage.setItem('friends', JSON.stringify(data.user.remainingFriendsQs) )
+      localStorage.setItem('coworkers', JSON.stringify(data.user.remainingCoworkersQs) )
+      localStorage.setItem('partner', JSON.stringify(data.user.remainingPartnersQs) )
+      localStorage.setItem('current_user', JSON.stringify(data.user.username))
+      this.props.history.push('/choose-your-adventure')
+    }
   }
 
 
