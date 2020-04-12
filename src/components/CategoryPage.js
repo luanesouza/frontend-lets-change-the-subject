@@ -16,6 +16,7 @@ class CategoryPage extends Component {
   whatCards = (evt, category) => {
     evt.preventDefault()
 
+    localStorage.setItem('chosenCategory', JSON.stringify(category))
     this.setQuestions(category)
   }
 
@@ -40,12 +41,13 @@ class CategoryPage extends Component {
   setQuestions = async (chosenCategory) => {
     let isGuest = JSON.parse(localStorage.isGuest)
     if(!isGuest) {
-      let choice = localStorage.getItem(chosenCategory)
+      let choice = JSON.parse(localStorage.chosenCategory)
+
       this.setState({
-        chosenQuestions: JSON.parse(choice)
+        chosenQuestions: choice
       })
-      localStorage.setItem('chosenQuestions', choice)
-      localStorage.setItem('chosenCategory', JSON.stringify(chosenCategory))
+      localStorage.chosenQuestions = localStorage.getItem(choice)
+      localStorage.chosenCategory = chosenCategory;
 
     } else {
       const data = await getQuestions(chosenCategory)

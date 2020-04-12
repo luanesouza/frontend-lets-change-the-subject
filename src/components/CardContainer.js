@@ -11,13 +11,11 @@ function CardContainer(props){
   const [leaving, isUserLeaving] = useState(false)
 
   const showOneCard = (evt, questionsLeft) => {
-
-    if(questionsLeft[0]) {
-      return setCurrentQuestion(questionsLeft[0])
+    if(!!questionsLeft[0]) {
+      setCurrentQuestion(questionsLeft[0])
     } else {
       props.history.push('/play-again')
     }
-
   }
 
   const getAction = (evt, action) => {
@@ -46,11 +44,6 @@ function CardContainer(props){
 
     switch(action) {
       case 'categories': props.history.push('/choose-your-adventure')
-      break;
-      case 'profile':
-      if(localStorage.current_user) {
-        props.history.push('/profile');
-      }
       break;
       case 'completion': isUserLeaving(true);
       break;
