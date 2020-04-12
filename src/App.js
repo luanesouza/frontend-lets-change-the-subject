@@ -6,6 +6,7 @@ import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import GameOver from './components/GameOver';
 import Profile from './components/Profile';
+import Skipped from './components/Skipped';
 import { getLoginData, createNewUser } from './utils';
 import './App.css';
 import Homepage from './components/Homepage';
@@ -149,6 +150,10 @@ class App extends Component {
 
           <Route exact path='/profile'>
             <Profile />
+          </Route>
+
+          <Route exact path='/skipped'>
+            <Skipped />
           </Route>
 
           <Route exact path='/'>
