@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import Card from './Card';
 import AreYouSure from './AreYouSure';
 import { withRouter } from 'react-router-dom';
+import { useSwipeable, Swipeable } from 'react-swipeable';
+import Draggable from 'react-draggable';
+
 
 function CardContainer(props){
 
@@ -19,8 +22,6 @@ function CardContainer(props){
   }
 
   const getAction = (evt, action) => {
-    evt.preventDefault()
-
     let questionsLeft = cachedCards.filter(current => {
       return currentQuestion.id !== current.id
     })
@@ -58,13 +59,9 @@ function CardContainer(props){
       </button>
 
       <div className='card-container'>
-        <Card card={currentQuestion} />
-      </div>
-      <div className='card-buttons'>
-        <button id='choice-button' onClick={(evt) => getAction(evt, 'answered')}>
-          <img src='https://image.flaticon.com/icons/png/512/130/130884.png' alt='right'/>
-          <p>Next</p>
-        </button>
+        <Swipeable onSwipedRight={(eventData, action) => getAction(eventData, 'answered')} >
+          <Card card={currentQuestion} />
+        </Swipeable>
       </div>
       {
         leaving

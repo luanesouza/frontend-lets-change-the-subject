@@ -19,6 +19,7 @@ export default function GameOver() {
       <section className='navigation-links'>
         <a href='choose-your-adventure'> Star a New Conversation</a>
       </section>
+
     </section>
   )
 }

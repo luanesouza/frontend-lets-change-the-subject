@@ -55,7 +55,6 @@ const login = async (token, id) => {
       }
     })
 
-    console.log(response);
 }
 // login(localStorage.token, )
 

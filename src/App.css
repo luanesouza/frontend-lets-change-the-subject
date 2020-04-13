@@ -35,6 +35,7 @@ button {
      opacity:1;
    }
 }
+
 /* ----- Homepage ----- */
 .Homepage {
   text-align: center;
@@ -45,12 +46,51 @@ button {
 #skip-tag {
   height:inherit;
   width: 100vw;
-  background-image: linear-gradient(#f71735, #2E52D2);
+  background-image: linear-gradient(#9F70DB, #98CAF8);
   color: white;
 }
 
+#skip-tag > h1 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 4.4vh;
+  line-height: 32px;
+}
+
+#skip-tag > p {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+
 .tap {
   margin-top: 35%;
+}
+
+.tap > p {
+  font-family: 'Josefin Sans', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 3.8vh;
+  line-height: 30px;
+  color: rgba(0, 0, 0, 0.5);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-transform: uppercase;
+  animation: fading 3s infinite;
+}
+
+@keyframes fading {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .signup-section {
@@ -165,7 +205,7 @@ button {
   }
 
   #card-info {
-    height: 60vh;
+    height: 80vh;
     width: 100%;
     font-size: 1.7rem;
     padding: 10% 4%;
@@ -185,8 +225,14 @@ button {
     border-top: 2px solid gray;
     border-left: 1.5px solid gray;
     border-right: .5px solid gray;
+    border-bottom: 5px solid gray;
     padding: 10% 8%;
   }
+
+  /* #card:active {
+    box-shadow: 5px 10px rgb(152,152,152);
+    transform: rotate(10deg)
+  } */
 
   .peppers {
     background-color: lightgray;
