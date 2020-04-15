@@ -59,7 +59,7 @@ function CardContainer(props){
       </button>
 
       <div className='card-container'>
-        <Swipeable onSwipedRight={(eventData, action) => getAction(eventData, 'answered')} >
+        <Swipeable onSwiped={(eventData, action) => getAction(eventData, 'answered')} >
           <Card card={currentQuestion} />
         </Swipeable>
       </div>

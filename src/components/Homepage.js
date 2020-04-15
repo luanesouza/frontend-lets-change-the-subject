@@ -2,6 +2,9 @@ import React from 'react';
 
 export default function Homepage(props){
 
+  let a = document.querySelector('._2XBDTIVigBJDybhZvL-hU3');
+  console.log(a);
+
   return(
     <section className='Homepage'>
       <button id='skip-tag' onClick ={ (evt) => props.isGuest(evt, 'guest')}>
@@ -13,7 +16,7 @@ export default function Homepage(props){
             title='tap'
             src="https://giphy.com/embed/4TbiajrbV5NZVAhs5w"
             width="50" height="70"
-            frameBorder="0" className="giphy-embed"
+            frameBorder="0"
             >
           </iframe>
         </section>

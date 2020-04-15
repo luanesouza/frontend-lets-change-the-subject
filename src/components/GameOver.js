@@ -16,8 +16,8 @@ export default function GameOver() {
         <br />
         Try exploring more questions...
       </p>
-      <section className='navigation-links'>
-        <a href='choose-your-adventure'> Star a New Conversation</a>
+      <section className='navigation-links tap'>
+        <a href='choose-your-adventure'> Talk Again?</a>
       </section>
 
     </section>
