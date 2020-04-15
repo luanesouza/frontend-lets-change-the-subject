@@ -2,9 +2,6 @@ import React from 'react';
 
 export default function Homepage(props){
 
-  let a = document.querySelector('._2XBDTIVigBJDybhZvL-hU3');
-  console.log(a);
-
   return(
     <section className='Homepage'>
       <button id='skip-tag' onClick ={ (evt) => props.isGuest(evt, 'guest')}>
