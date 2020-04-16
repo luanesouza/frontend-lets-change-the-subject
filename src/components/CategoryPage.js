@@ -53,7 +53,7 @@ class CategoryPage extends Component {
     const data = await getQuestions(chosenCategory)
     localStorage.setItem('chosenQuestions', JSON.stringify(data.questions))
     localStorage.setItem('chosenCategory', JSON.stringify(data.name))
-    
+
     // let isGuest = JSON.parse(localStorage.isGuest)
     // if(!isGuest) {
     //   let choice = JSON.parse(localStorage.chosenCategory)
@@ -75,7 +75,7 @@ class CategoryPage extends Component {
 
   render() {
     const categoryButtons = this.state.categories.map( category => {
-      return <button className='border-gradient' id='category-button' onClick={(evt) => this.whatCards(evt, category.name)} key={category.id}>
+      return <button className='border-gradient' id='category-button' onClick={(evt) => this.whatCards(evt, category.name)} key={category.name}>
                 {this.whichImage(category.name)}
                 <p>Talk with {category.name}</p>
               </button>
