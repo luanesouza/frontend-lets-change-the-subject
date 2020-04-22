@@ -19,6 +19,9 @@ a {
 button {
   /* background-color: none; */
   /* border: none; */
+  border: none;
+  background-image: inherit;
+  background-color: inherit;
 }
 
 #error {

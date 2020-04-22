@@ -15,11 +15,11 @@ class CategoryPage extends Component {
 
   whichImage = (category) => {
     if(category === 'friends'){
-      return(<img src='https://image.flaticon.com/icons/svg/2058/2058666.svg'/>)
+      return(<img src='https://image.flaticon.com/icons/svg/2058/2058666.svg' alt='category'/>)
     }else if(category === 'coworkers'){
-      return(<img src='https://image.flaticon.com/icons/svg/1965/1965765.svg'/>)
+      return(<img src='https://image.flaticon.com/icons/svg/1965/1965765.svg' alt='category'/>)
     } else{
-      return(<img src='https://image.flaticon.com/icons/svg/1029/1029183.svg'/>)
+      return(<img src='https://image.flaticon.com/icons/svg/1029/1029183.svg' alt='category'/>)
     }
 
   }
