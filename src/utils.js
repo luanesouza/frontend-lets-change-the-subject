@@ -1,6 +1,6 @@
 const axios = require('axios')
-// const BASE_URL = process.env.REACT_APP_BASE_URL || 'https://backend-change-the-subject.herokuapp.com/api/v1';
-const BASE_URL = 'http://localhost:3000/api/v1'
+const BASE_URL = process.env.REACT_APP_BASE_URL || 'https://backend-change-the-subject.herokuapp.com/api/v1';
+// const BASE_URL = 'http://localhost:3000/api/v1'
 
 const getCategories = async () => {
   const response = await axios(`${BASE_URL}/categories`);
