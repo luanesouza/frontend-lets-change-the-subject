@@ -1,11 +1,13 @@
 const axios = require('axios')
-const BASE_URL = process.env.REACT_APP_BASE_URL || 'https://backend-change-the-subject.herokuapp.com/api/v1';
-// const BASE_URL = 'http://localhost:3000/api/v1'
+// const BASE_URL = process.env.REACT_APP_BASE_URL || 'https://backend-change-the-subject.herokuapp.com/api/v1';
+const BASE_URL = 'http://localhost:3000/api/v1'
 
 const getCategories = async () => {
   const response = await axios(`${BASE_URL}/categories`);
+  console.log(response);
   return response.data;
 }
+
 
 const getQuestions = async (category) => {
 
@@ -18,9 +20,7 @@ const getLoginData = async (username, password) => {
     username: username,
     password: password,
   }
-  debugger
   const response = await axios.post(`${BASE_URL}/login`, data);
-  debugger
   if(response.failure){
     console.log('try again');
     return response.failure;

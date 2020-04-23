@@ -1,4 +1,5 @@
 import React from 'react';
+import tap from '../images/tap_gif.webp'
 
 export default function Homepage(props){
 
@@ -9,13 +10,7 @@ export default function Homepage(props){
         <p> Conversations made easy </p>
         <section className='tap'>
           <p>tap to start</p>
-          <iframe
-            title='tap'
-            src="https://giphy.com/embed/4TbiajrbV5NZVAhs5w"
-            width="50" height="70"
-            frameBorder="0"
-            >
-          </iframe>
+          <img id='tap' src={tap} />
         </section>
       </button>
     </section>

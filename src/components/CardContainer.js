@@ -4,6 +4,7 @@ import AreYouSure from './AreYouSure';
 import { withRouter } from 'react-router-dom';
 import { useSwipeable, Swipeable } from 'react-swipeable';
 import Draggable from 'react-draggable';
+import close from '../images/close.webp'
 
 
 function CardContainer(props){
@@ -55,7 +56,7 @@ function CardContainer(props){
   return(
     <section >
       <button onClick= {(evt, action) => navButtons(evt, 'completion')}>
-        <img id='options' src='https://cdn4.iconfinder.com/data/icons/geomicons/32/672366-x-512.png' alt='options'/>
+        <img id='options' src={close} alt='close-button'/>
       </button>
 
       <div className='card-container'>

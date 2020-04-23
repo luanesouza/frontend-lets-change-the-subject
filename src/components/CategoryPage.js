@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { withRouter} from 'react-router-dom';
 import { getCategories, getQuestions } from '../utils';
+import friends from '../images/friends.svg';
+import coworkers from '../images/coworkers.svg';
+import partner from '../images/partner.svg';
 
 class CategoryPage extends Component {
 
   state = {
     chosenQuestions: [],
     categories: [],
+    loaded: false
   }
 
   componentDidMount = () => {
@@ -15,11 +19,11 @@ class CategoryPage extends Component {
 
   whichImage = (category) => {
     if(category === 'friends'){
-      return(<img src='https://image.flaticon.com/icons/svg/2058/2058666.svg' alt='category'/>)
+      return(<img src={friends} alt='friends'/>)
     }else if(category === 'coworkers'){
-      return(<img src='https://image.flaticon.com/icons/svg/1965/1965765.svg' alt='category'/>)
+      return(<img src={coworkers} alt='coworkers'/>)
     } else{
-      return(<img src='https://image.flaticon.com/icons/svg/1029/1029183.svg' alt='category'/>)
+      return(<img src={partner} alt='partner'/>)
     }
 
   }
@@ -34,16 +38,20 @@ class CategoryPage extends Component {
   setCategories = async () => {
     if(!localStorage.categories){
       const data = await getCategories()
+      console.log(data);
       let categories =  data[0] ? data : ['friends', 'coworkers', 'partner']
       localStorage.setItem('categories', JSON.stringify(categories))
 
       this.setState({
-        categories
+        categories: categories,
+        loaded: true
       })
 
     } else {
+      console.log(localStorage);
       this.setState({
-        categories: JSON.parse(localStorage.categories)
+        categories: JSON.parse(localStorage.categories),
+        loaded: true
       })
 
     }
@@ -84,11 +92,16 @@ class CategoryPage extends Component {
     return(
 
       <section className='CategoryPage'>
-
-        <>
-          <h3> Select a category </h3>
-          { categoryButtons }
-        </>
+        {
+          this.state.loaded
+          ?
+          <>
+            <h3> Select a category </h3>
+            { categoryButtons }
+          </>
+          :
+          <p>loading...</p>
+        }
 
       </section>
     )
