@@ -2,3 +2,8 @@
 
 from = "/play-again"
 to = "/choose-your-adventure"
+status = 200
+
+# from = "/*"
+# to = "/index.html"
+# status = 200
