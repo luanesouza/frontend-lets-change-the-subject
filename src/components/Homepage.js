@@ -1,5 +1,5 @@
 import React from 'react';
-import tap from '../images/tap_gif.webp'
+import tap from '../images/tap_gif.png'
 
 export default function Homepage(props){
 
