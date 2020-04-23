@@ -342,7 +342,7 @@ button {
   width: 100vw;
   height: 100vh;
   animation-name: transitionScreen;
-  animation-duration: 2s;
+  animation-duration: 1s;
   position:absolute;
   padding: 5%;
   text-align: center;

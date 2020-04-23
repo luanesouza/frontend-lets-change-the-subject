@@ -5,7 +5,7 @@ export default function GameOver() {
   // const isGuest = JSON.parse(localStorage.isGuest)
   // const current_user = !!localStorage.current_user ? localStorage.current_user : 'friend';
   //
-  const questions_category = !!localStorage.chosenCategory ? ` with your ${localStorage.chosenCategory}` : true;
+  const questions_category = !!localStorage.chosenCategory ? ` with your ${JSON.parse(localStorage.chosenCategory)}` : true;
 
   return(
     <section id='GameOver'>
