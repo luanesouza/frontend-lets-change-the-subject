@@ -1,5 +1,5 @@
 import React from 'react';
-import tap from '../images/tap_gif.png'
+import tap from '../images/tap-icon.svg'
 
 export default function Homepage(props){
 

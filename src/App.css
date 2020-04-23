@@ -37,6 +37,17 @@ button {
 #tap {
   width: 4rem;
   height: 4rem;
+  animation: fadingTap 3s infinite;
+}
+
+@keyframes fadingTap {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: .4;
+  }
 }
 
 @keyframes error {
@@ -80,7 +91,7 @@ button {
 
 
 .tap {
-  margin-top: 35%;
+  margin-top: 7rem;
 }
 
 .tap > p {

@@ -4,7 +4,7 @@ import AreYouSure from './AreYouSure';
 import { withRouter } from 'react-router-dom';
 import { useSwipeable, Swipeable } from 'react-swipeable';
 import Draggable from 'react-draggable';
-import close from '../images/close.png'
+import close from '../images/close-button.svg'
 
 
 function CardContainer(props){
