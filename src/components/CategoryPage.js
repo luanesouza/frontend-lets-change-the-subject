@@ -38,7 +38,6 @@ class CategoryPage extends Component {
   setCategories = async () => {
     if(!localStorage.categories){
       const data = await getCategories()
-      console.log(data);
       let categories =  data[0] ? data : ['friends', 'coworkers', 'partner']
       localStorage.setItem('categories', JSON.stringify(categories))
 
@@ -48,7 +47,6 @@ class CategoryPage extends Component {
       })
 
     } else {
-      console.log(localStorage);
       this.setState({
         categories: JSON.parse(localStorage.categories),
         loaded: true
