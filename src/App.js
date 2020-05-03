@@ -7,6 +7,7 @@ import SignupForm from './components/SignupForm';
 import GameOver from './components/GameOver';
 import Profile from './components/Profile';
 import Skipped from './components/Skipped';
+import Warning from './components/Warning';
 import { getLoginData, createNewUser } from './utils';
 import './App.css';
 import Homepage from './components/Homepage';
@@ -128,40 +129,44 @@ class App extends Component {
     return (
 
       <main className="App">
-        <Switch>
-          <Route exact path='/choose-your-adventure'>
-            <CategoryPage  />
-          </Route>
+        <section id='warning'>
+          <Warning />
+        </section>
+        <section id='mobile'>
+          <Switch>
+            <Route exact path='/choose-your-adventure'>
+              <CategoryPage  />
+            </Route>
 
-          <Route path='/login'>
-            <LoginForm error={this.state.error} handleSubmit={(evt, action) => this.handleSubmit(evt, action)} handleChange={(evt) => this.handleChange(evt)} userInfo={this.state.userInfo} />
-          </Route>
+            <Route path='/login'>
+              <LoginForm error={this.state.error} handleSubmit={(evt, action) => this.handleSubmit(evt, action)} handleChange={(evt) => this.handleChange(evt)} userInfo={this.state.userInfo} />
+            </Route>
 
-          <Route path='/signup'>
-            <SignupForm error={this.state.error} handleSubmit={(evt, action) => this.handleSubmit(evt, action)} handleChange={(evt) => this.handleChange(evt)} userInfo={this.state.userInfo} />
-          </Route>
+            <Route path='/signup'>
+              <SignupForm error={this.state.error} handleSubmit={(evt, action) => this.handleSubmit(evt, action)} handleChange={(evt) => this.handleChange(evt)} userInfo={this.state.userInfo} />
+            </Route>
 
-          <Route exact path='/game'>
-            <CardContainer />
-          </Route>
+            <Route exact path='/game'>
+              <CardContainer />
+            </Route>
 
-          <Route exact path='/play-again'>
-            <GameOver />
-          </Route>
+            <Route exact path='/play-again'>
+              <GameOver />
+            </Route>
 
-          <Route exact path='/profile'>
-            <Profile />
-          </Route>
+            <Route exact path='/profile'>
+              <Profile />
+            </Route>
 
-          <Route exact path='/skipped'>
-            <Skipped />
-          </Route>
+            <Route exact path='/skipped'>
+              <Skipped />
+            </Route>
 
-          <Route exact path='/'>
-            <Homepage isGuest={this.isGuest} />
-          </Route>
-        </Switch>
-
+            <Route exact path='/'>
+              <Homepage isGuest={this.isGuest} />
+            </Route>
+          </Switch>
+        </section>
       </main>
     );
   }
