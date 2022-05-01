@@ -9,7 +9,11 @@ export default function Card(props) {
 
   setTimeout(() => {
     isGifShown(true);
-  }, 8000); //if the user doesn't take action after 8 seconds, we display the swip gif, indicating how to interact with the card
+  }, 5000); //if the user doesn't take action after 5 seconds, we display the swip gif, indicating how to interact with the card
+
+  setTimeout(() => {
+    isGifShown(false);
+  }, 8000);
   return (
     <section id='card-info'>
       {
