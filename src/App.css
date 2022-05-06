@@ -71,6 +71,12 @@ button {
   animation: fadingTap 3s infinite;
 }
 
+#swipe-gif {
+  width: 6rem;
+  height: 6rem;
+  margin-left: 10em;
+}
+
 @keyframes fadingTap {
   0% {
     opacity: 0;
@@ -254,6 +260,7 @@ button {
 
   .card-container {
     height: 100%;
+    cursor: grab;
   }
 
   #choice-button > img {

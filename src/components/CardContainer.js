@@ -4,59 +4,59 @@ import AreYouSure from './AreYouSure';
 import { withRouter } from 'react-router-dom';
 import { useSwipeable, Swipeable } from 'react-swipeable';
 import Draggable from 'react-draggable';
-import close from '../images/close-button.svg'
+import close from '../images/close-button.svg';
 
 
-function CardContainer(props){
+function CardContainer(props) {
 
-  let cachedCards = JSON.parse(localStorage.chosenQuestions)
+  let cachedCards = JSON.parse(localStorage.chosenQuestions);
 
-  const [currentQuestion, setCurrentQuestion] = useState(cachedCards[0])
-  const [leaving, isUserLeaving] = useState(false)
+  const [currentQuestion, setCurrentQuestion] = useState(cachedCards[0]);
+  const [leaving, isUserLeaving] = useState(false);
 
   const showOneCard = (evt, questionsLeft) => {
-    if(!!questionsLeft[0]) {
-      setCurrentQuestion(questionsLeft[0])
+    if (!!questionsLeft[0]) {
+      setCurrentQuestion(questionsLeft[0]);
     } else {
-      props.history.push('/play-again')
+      props.history.push('/play-again');
     }
-  }
+  };
 
   const getAction = (evt, action) => {
     let questionsLeft = cachedCards.filter(current => {
-      return currentQuestion.id !== current.id
-    })
-    localStorage.setItem('chosenQuestions', JSON.stringify(questionsLeft))
-    showOneCard(evt, questionsLeft)
+      return currentQuestion.id !== current.id;
+    });
+    localStorage.setItem('chosenQuestions', JSON.stringify(questionsLeft));
+    showOneCard(evt, questionsLeft);
 
-    if( action === 'answered') {
+    if (action === 'answered') {
       const questionsAnswered = JSON.parse(localStorage.getItem('answeredQuestions')) || [];
-      const question = [ currentQuestion, ...questionsAnswered ];
+      const question = [currentQuestion, ...questionsAnswered];
       localStorage.setItem('answeredQuestions', JSON.stringify(question));
 
     } else {
-        const questionsSkipped = JSON.parse(localStorage.getItem('skippedQuestions')) || [];
-        const question = [currentQuestion, ...questionsSkipped];
-        localStorage.setItem('skippedQuestions', JSON.stringify(question));
+      const questionsSkipped = JSON.parse(localStorage.getItem('skippedQuestions')) || [];
+      const question = [currentQuestion, ...questionsSkipped];
+      localStorage.setItem('skippedQuestions', JSON.stringify(question));
     }
-  }
+  };
 
   const navButtons = (evt, action) => {
-    evt.preventDefault()
+    evt.preventDefault();
 
-    switch(action) {
-      case 'categories': props.history.push('/choose-your-adventure')
-      break;
+    switch (action) {
+      case 'categories': props.history.push('/choose-your-adventure');
+        break;
       case 'completion': isUserLeaving(true);
-      break;
+        break;
       default: isUserLeaving(false);
     }
-  }
+  };
 
-  return(
-    <section >
-      <button onClick= {(evt, action) => navButtons(evt, 'completion')}>
-        <img id='options' src={close} alt='close-button'/>
+  return (
+    <section>
+      <button onClick={(evt, action) => navButtons(evt, 'completion')}>
+        <img id='options' src={close} alt='close-button' />
       </button>
 
       <div className='card-container'>
@@ -66,13 +66,13 @@ function CardContainer(props){
       </div>
       {
         leaving
-        ?
-        <AreYouSure isUserLeaving={isUserLeaving} leaving={leaving}/>
-        :
-        null
+          ?
+          <AreYouSure isUserLeaving={isUserLeaving} leaving={leaving} />
+          :
+          null
       }
     </section>
-  )
+  );
 }
 
 export default withRouter(CardContainer);
